@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour - Zone Detail</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17b0cf",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#111e21",
+                        "card-dark": "#1a2629",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative min-h-screen w-full flex flex-col pb-28">
+<!-- Immersive Header Section -->
+<header class="relative w-full h-[45vh] min-h-[360px] flex-shrink-0">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Valley of the Kings landscape with mountains and blue sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD82yOaRNNoTp2HSRiI_ILw_qQ-M-o4tnBPokFZNGk6LXoeT0CJynk9SmrQLX_IGyAay4laTmcLazswpnPB-LD7MY576PkpwUm7qbfSdzpknRkY70sIWjmO7eJOnnyIktcLR7pWD2w5ECbJUNHWBCJE3IFr7xXYQQtvfVrXs6coJarmEEN_YhbDPlqhwNoJUAT9meNhHOSKuqzBoVRquT6O9cuh0dDNJztRvWG4EGz6QDNSgOgPgmjdpZqGwXZ0NCBsWWbiIycWWRYr');">
+</div>
+<!-- Overlay Gradients -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-background-dark"></div>
+<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-dark to-transparent"></div>
+<!-- Top Navigation Bar -->
+<nav class="absolute top-0 left-0 w-full p-4 pt-12 flex items-center justify-between z-20">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:text-primary transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">download</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</nav>
+<!-- Hero Content (positioned absolute bottom) -->
+<div class="absolute bottom-0 left-0 w-full px-5 pb-6 z-10">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-3 py-1 rounded-full bg-primary text-white text-xs font-bold tracking-wide shadow-lg shadow-primary/20">
+                        PREMIUM ZONE
+                    </span>
+<span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-white text-xs font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-yellow-400 filled">star</span>
+                        4.8
+                    </span>
+</div>
+<h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                    Valley of the Kings
+                </h1>
+<div class="flex items-center gap-1 text-gray-300 text-sm mt-1 font-medium">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span data-location="Luxor">Luxor, West Bank</span>
+<span class="mx-1">•</span>
+<span>12 Landmarks</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 px-5 -mt-2">
+<!-- Description & Read More -->
+<div class="mb-8">
+<p class="text-gray-300 text-sm leading-relaxed">
+                    The ancient burial ground of pharaohs, hidden in the Theban hills. Discover the tombs of Tutankhamun, Ramses, and other legendary rulers in this vast necropolis.
+                    <button class="text-primary font-semibold ml-1 hover:underline">Read more</button>
+</p>
+</div>
+<!-- 3D Preview Card (USP) -->
+<div class="mb-8 group cursor-pointer">
+<div class="relative w-full h-48 rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-card-dark">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="360 view inside an ancient Egyptian tomb with hieroglyphics" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNNJXlziAw4Svwq88pfQYr16ETCKGC8tQqLm4ew9r2gzdlGISGWyJVo7lXOmujEHkiMa7OYpsqCJQTEIcfMOV8Ggs7tOgm_Sb1hcA7mJmTY_rdaWj3JYF6LITQ-aF_0xDJiP-SOmcojVZzQmdnzqrQ3lN12txC95cWfBpnNkaQsQXkUVY3vHXrSPDDJR1gS3zcUSb5WO1V2pvEjJ-4RflqAbpfmfyGIyKtiQND2JVWfKthqPFaaebISPhbVUKlGcz4YI3mXr3ife47');">
+</div>
+<!-- Overlay -->
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex flex-col items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-lg mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-3xl animate-pulse">360</span>
+</div>
+<p class="text-white font-bold text-sm tracking-wide drop-shadow-md uppercase">Tap to Explore Entrance</p>
+</div>
+<!-- Badge -->
+<div class="absolute top-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur-sm text-[10px] font-bold text-white uppercase border border-white/10">
+                        Interactive
+                    </div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex items-center border-b border-white/10 mb-6 sticky top-[80px] z-20 bg-background-dark/95 backdrop-blur-xl -mx-5 px-5 pt-2">
+<button class="pb-3 border-b-2 border-primary text-white font-semibold text-sm mr-6">Landmarks</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-400 hover:text-white font-medium text-sm mr-6 transition-colors">History</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-400 hover:text-white font-medium text-sm transition-colors">Map</button>
+</div>
+<!-- Landmarks List -->
+<div class="flex flex-col gap-4">
+<!-- Landmark Item 1 (Locked) -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-card-dark border border-white/5 hover:border-primary/30 transition-all">
+<div class="relative h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Golden mask of Tutankhamun" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgQ5mF-m7LdsUGLuPc4YeaUPg5cAwWqZXIw0HyZjlJrF6DXLqCkBVkD3x5TItzPlpJv8Rw1yfPEwabNccVdeva8Y-7Cs90Y-QI5_iTuIx2Jfozccp86620ncxJnj1-6J1U9A_YkCY0T15xhMIkccMGPjs-PdylT5XkD2HX8Ac2l2etNUKKIcNq4EAWjfD9pbudDSMgAV9t_WwiJUUux6m-OTzOZ5mR_YHOnug5yJMOEIo4ZC76xFvRunaXtMJvfDlFTN0dUfGiWwBg');"></div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white/80 text-lg">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-semibold text-sm truncate">Tomb of Tutankhamun</h3>
+<p class="text-gray-500 text-xs mt-0.5">KV62 • Famous Discovery</p>
+</div>
+<div class="text-gray-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Landmark Item 2 (Locked) -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-card-dark border border-white/5 hover:border-primary/30 transition-all">
+<div class="relative h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Intricate hieroglyphics on a tomb wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMuJu4yi-zl58oarABpwl1TccofWHjQlPyBhHTbXGLraNVT0eyykLkhwQXCA40mVXC_whqXoyR5ozV_SyXBQqty49Nl1Flw23kYH1MncKgbsKYXWNnhji52NuFkC1Ll22yyF3ycrCX-Z-nSKOg_KXgdDZf_YzYay4RG_y1m-11gnuweJIMp21j5UNGrrz9Mdzr-wZIqJNtBCzEos5RebLMsyT7MbfpCnDdyllkh01-FBuwoj3FFA5XNMR4NOyfgovfJ0k19OlC9A_M');"></div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white/80 text-lg">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-semibold text-sm truncate">Tomb of Ramses VI</h3>
+<p class="text-gray-500 text-xs mt-0.5">KV9 • Highly Detailed</p>
+</div>
+<div class="text-gray-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Landmark Item 3 (Free/Unlocked) -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-card-dark border border-white/5 hover:border-primary/30 transition-all">
+<div class="relative h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Entrance to the tomb of Merneptah" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyOWod8sT9zWxO4B1YrARQgCpwuepDQYT48EIiMVaTp39-dg2XzZ32THWiu1M2aro9_noAkPM8YzzZvCwa9N-fwSVvgEkT3VBSXqK5jvoq3hFN7VMDgV3yHaRu-NarJCNt56UEN5mfMpDCtYx7F_ZX_m9Oowy17ftCb-2JpayMZE3qP9oNpgec63uBAqh5ToC5HvLeqvHM6M086BSYnQQxKnzr5pdmdVxIkDSKfdJt29p1zoxK3vC_aVVG3sOgCSbA54gboYnIxXRP');"></div>
+<div class="absolute bottom-0 left-0 right-0 bg-primary/90 text-center text-[8px] font-bold text-white py-0.5 uppercase tracking-wider">
+                            Free Preview
+                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-semibold text-sm truncate">Tomb of Merneptah</h3>
+<p class="text-gray-500 text-xs mt-0.5">KV8 • Deepest Tomb</p>
+</div>
+<div class="text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+<!-- Landmark Item 4 (Locked) -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-card-dark border border-white/5 hover:border-primary/30 transition-all">
+<div class="relative h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Columns inside an ancient Egyptian temple" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAW1cVBI-RqC1-77gYeMwaZ_Q3nSsW1q58K3vadfFWODfjEqI4Wd3mA2La2bpQtjtg1SnQ4oGJOvgXUZ3-2W860rkJ7C78CDEsoVVAlMiQ9kbf7VibhDMHDxppqClbq9Kug6696eAofugAuDzJ0KXOzr6ytLR2z6U72AJ9ARDh-MUN8ixWdJQngIbNLluSkWhcf7RQflkGnJRn5s1v8JHzkMMEErWN7BHRd5Gsw01MgWRIqlvaS11seH7s8FsTcYRXmXwRmAjE-XbCT');"></div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white/80 text-lg">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-semibold text-sm truncate">Tomb of Seti I</h3>
+<p class="text-gray-500 text-xs mt-0.5">KV17 • Longest Tomb</p>
+</div>
+<div class="text-gray-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50">
+<!-- Blur Gradient Top -->
+<div class="h-8 w-full bg-gradient-to-t from-background-dark/90 to-transparent pointer-events-none"></div>
+<div class="bg-background-dark/95 backdrop-blur-xl border-t border-white/10 pb-8 pt-4 px-5">
+<div class="flex items-center justify-between gap-6 max-w-lg mx-auto">
+<div class="flex flex-col">
+<span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Full Access</span>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold text-white">$4.99</span>
+<span class="text-sm text-gray-500 line-through">$8.00</span>
+</div>
+</div>
+<button class="flex-1 h-12 bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white font-bold rounded-xl shadow-lg shadow-primary/25 flex items-center justify-center gap-2">
+<span>Unlock Zone</span>
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

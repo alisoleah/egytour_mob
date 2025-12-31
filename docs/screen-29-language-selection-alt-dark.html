@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour - Language Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF6B00", // Architectural Orange
+                        "background-dark": "#080808", // Deep Black
+                        "surface-dark": "#141414", // Panel Black
+                        "surface-highlight": "#1F1F1F",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>.custom-radio:checked {
+    background-color: #FF6B00;
+    border-color: #FF6B00;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAi1X6Cc8uzII83PZUx4j5l5k6KWgkukkoWfXIqaav_bZbWYPbFoSmEloYsQgGfBHlyOSwzdOuHy3LXAXAbIyyQKbDJ26o55nSmiq83nEGCOvvp4XCavI93UNa_RHFrYFCNiwpB7difNyWYk2HGYDexKsqq9Yi5fZ5JAZS0iLkIghJPhGUhDIOdAiQwGH5S2aqmGkspib9z8PPhgrW-6rYUqCLQ93ZJhdnfqNtdMPg_PJHVyHlcHYynwRR-M1n3NiVo7uWTv84GATTO)
+    }body::-webkit-scrollbar {
+    display: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-white antialiased selection:bg-primary selection:text-black min-h-screen flex flex-col relative overflow-hidden">
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute inset-0 bg-[size:40px_40px] bg-grid-pattern opacity-30"></div>
+<div class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay grayscale contrast-125" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMIKaZ7kYibK6n_9593uOJc1hxArlXXicjNAKTqRak18AFALGHzgNrDzRlFHBaCyUsYHPYuZ49afs2faR4KVCnppZbA3hll1a-82pSCdFij0S-gl9m0WK0HKDFMAALS6pXm9UDT44ljgY8IBWRdE9u9LrRqd3cj0uLq6gaiLIgxvJWxi2uLIz4PM-eb0_KPm9Bjnj7PmpqzKTCsq6ksZ4prOTN6du0MwoEBFA6SZ9jAJCsr8rzOtNJwOXFQBM7RnYt-KcMCj4ZWgXL');"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/80 to-background-dark"></div>
+<div class="absolute top-0 left-6 bottom-0 w-px bg-white/5 border-r border-dashed border-white/5"></div>
+<div class="absolute top-0 right-6 bottom-0 w-px bg-white/5 border-l border-dashed border-white/5"></div>
+</div>
+<div class="relative z-10 flex flex-col flex-grow w-full max-w-md mx-auto h-full px-8 pt-14 pb-8">
+<header class="flex flex-col gap-6 mb-12">
+<div class="w-14 h-14 bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+<span class="material-symbols-outlined text-primary text-3xl z-10">temple_hindu</span>
+</div>
+<div class="space-y-1">
+<p class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-1">Configuration</p>
+<h1 class="text-4xl font-extrabold tracking-tight text-white leading-none">
+                    SELECT<br/>
+<span class="text-white/40">LANGUAGE</span>
+</h1>
+</div>
+</header>
+<div class="flex flex-col gap-3 w-full">
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-dark border border-white/10 rounded-xl transition-all duration-300 hover:border-primary/50 hover:bg-surface-highlight hover:translate-x-1">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-4 pl-2">
+<span class="text-2xl filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">🇬🇧</span>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-white group-hover:text-primary transition-colors">English</span>
+<span class="text-xs text-gray-500 font-medium">Default</span>
+</div>
+</div>
+<div class="relative">
+<input checked="" class="custom-radio appearance-none h-5 w-5 border-2 border-gray-600 rounded-full bg-transparent focus:ring-0 focus:ring-offset-0 transition-all" name="language" type="radio"/>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-dark border border-white/10 rounded-xl transition-all duration-300 hover:border-primary/50 hover:bg-surface-highlight hover:translate-x-1">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-4 pl-2">
+<span class="text-2xl filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">🇫🇷</span>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-white group-hover:text-primary transition-colors">Français</span>
+<span class="text-xs text-gray-500 font-medium">French</span>
+</div>
+</div>
+<div class="relative">
+<input class="custom-radio appearance-none h-5 w-5 border-2 border-gray-600 rounded-full bg-transparent focus:ring-0 focus:ring-offset-0 transition-all" name="language" type="radio"/>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-dark border border-white/10 rounded-xl transition-all duration-300 hover:border-primary/50 hover:bg-surface-highlight hover:translate-x-1">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-4 pl-2">
+<span class="text-2xl filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">🇪🇬</span>
+<div class="flex flex-col items-start">
+<span class="text-lg font-bold text-white group-hover:text-primary transition-colors font-display" lang="ar">العربية</span>
+<span class="text-xs text-gray-500 font-medium">Arabic</span>
+</div>
+</div>
+<div class="relative">
+<input class="custom-radio appearance-none h-5 w-5 border-2 border-gray-600 rounded-full bg-transparent focus:ring-0 focus:ring-offset-0 transition-all" name="language" type="radio"/>
+</div>
+</label>
+</div>
+<div class="flex-grow"></div>
+<div class="relative mt-8 pt-6">
+<div class="absolute top-0 left-0 w-8 h-[2px] bg-primary"></div>
+<div class="absolute top-0 left-10 right-0 h-[1px] bg-white/10"></div>
+<button class="group w-full h-16 bg-primary hover:bg-orange-500 active:scale-[0.99] transition-all rounded-lg flex items-center justify-between px-6 shadow-[0_0_20px_rgba(255,107,0,0.15)] overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+<span class="text-black text-lg font-extrabold uppercase tracking-wider z-10">Start Journey</span>
+<div class="bg-black/10 w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors z-10">
+<span class="material-symbols-outlined text-black text-xl group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</div>
+</button>
+<div class="flex justify-center gap-6 mt-6 opacity-40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">wifi_off</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">Offline Ready</span>
+</div>
+<div class="w-px h-3 bg-white/30 self-center"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">view_in_ar</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">3D View</span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

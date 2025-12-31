@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#F97316", // Brand Orange
+              "primary-dark": "#EA580C", // Darker Orange for hover
+              "background-light": "#f6f8f8",
+              "background-dark": "#18181b", // Dark Grey
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            animation: {
+                fadeIn: 'fadeIn 1s ease-out forwards',
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }.no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-white h-screen overflow-hidden">
+<div class="relative h-full w-full flex flex-col">
+<div class="absolute inset-0 z-0 select-none pointer-events-none">
+<div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-background-dark z-10"></div>
+<div class="absolute bottom-0 left-0 right-0 h-[70%] bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent z-10"></div>
+<div class="h-full w-full bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-linear scale-110 grayscale-[20%]" data-alt="Majestic view of the Great Sphinx and Pyramids of Giza at golden hour sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANxY82i30oP3VetLos3ln0KEPU6onNUTxbMFdR8Es_DNi4SH_FZtsFwRcA244DoVtqyrBSblv769evljDUQh5KsMf67ie_3-wcPyDtVCWkcqrqEYOjos6BrYxu9pbuFRBpzSMSn896h8FlWL8kIzzM4DDi4HkNbNDutfHtScx3B2rkduBOjBO5ftMgpAy7Yg7ieBN_7GZD4P--Sbla33a9lor8tti91inL1wz3Hz-jP6zozoxxroJ34tUdJ7rEuKWo3T3yBSoyS5MF');">
+</div>
+</div>
+<div class="relative z-20 flex flex-col h-full justify-between pt-10 pb-6 px-6">
+<div class="flex flex-col items-center justify-center mt-6 opacity-0 animate-fadeIn">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-orange-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative w-24 h-24 bg-[#232323] ring-1 ring-white/10 rounded-full flex items-center justify-center shadow-2xl">
+<span class="material-symbols-outlined text-primary text-5xl">temple_hindu</span>
+</div>
+</div>
+<h1 class="text-white tracking-[0.2em] text-2xl font-bold mt-4 uppercase drop-shadow-md">Egytour</h1>
+</div>
+<div class="flex flex-col gap-6 mt-auto w-full max-w-md mx-auto">
+<div class="w-full">
+<div class="flex flex-row items-center justify-between gap-3 overflow-x-auto no-scrollbar pb-2">
+<div class="flex flex-col items-center gap-2 group cursor-pointer w-24 flex-shrink-0">
+<div class="w-full aspect-square rounded-xl bg-zinc-800/50 border border-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden relative transition-all group-hover:border-primary/50 group-hover:bg-zinc-800/80">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="Abstract map pattern with navigation lines" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBug1Pvy1QdG2ctSwFQBn3N4Feg5_XnL_w3qvpBfxcczfjPbEcGo-1sVP7Y_emvo7W7jHy6baxt-OviIcFV4sebpm27-lEam6TbVAt_wyvD6N0KptWFkZOWhuKaZQe94YsgCwyFqngsTbcwARCFpl6eSZYADpnGhlxAMv3YTmTnNi4NkDAY4-u_vp9mznL-NkImCZOXnqQi7vCytCUW5w335ftzOIOKUHOj2vvTFyksaIwXB0-O5M8YJ9mtIbwfNeZKEQoNk0TcSFJh')"></div>
+<span class="material-symbols-outlined text-primary text-3xl z-10">map</span>
+</div>
+<p class="text-white/80 text-[11px] font-medium tracking-wide uppercase text-center">Offline Maps</p>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer w-24 flex-shrink-0">
+<div class="w-full aspect-square rounded-xl bg-zinc-800/50 border border-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden relative transition-all group-hover:border-primary/50 group-hover:bg-zinc-800/80">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="Geometric 3D wireframe structure representing panoramic view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBneSvOUMuJEbBYfGIHzCw_Kt0FeIHJHioZCm3_z6b2-KX2yPL2xjyEVT-1-Fxo572K_Wc64fW2GLEv-EWTpWSQzK0jP4Eg1RwPJtzqgP0gQRd7aLMjtJhGdoqbZe_J04yML-Wypcj7w2r-312JxLSA-atPzEV49QhsCBG3yJGbjrRAt2tKQlNgPrdriE-vbkoNxGt9HKbSZSfpHy_fuD9aUZ7VqN0awZXPeIryEqR0FrYSxpXOeRkbty9iZ3Ga-KdjnPK_QcCDgjEQ')"></div>
+<span class="material-symbols-outlined text-primary text-3xl z-10">view_in_ar</span>
+</div>
+<p class="text-white/80 text-[11px] font-medium tracking-wide uppercase text-center">3D Tours</p>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer w-24 flex-shrink-0">
+<div class="w-full aspect-square rounded-xl bg-zinc-800/50 border border-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden relative transition-all group-hover:border-primary/50 group-hover:bg-zinc-800/80">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="Abstract golden texture representing smart pricing" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsND9bMwh96TAnIJAQJx6SI6KMpEVz8Ru2pqRapXJZ0WQGP-pxmTtVbEZxYwoj4HNNRerMfDhU1l35S6khK6Oqzv3CsvemW_QfdrCflUfxs1blp638J1ngNH6LW6myPrfoVH_8R10zux1OaZ_qB2qv1CELgcEZnRhVCBQjHKOMd2I2Wv61ezp_y_h2m9njx-zBmonNvSBjgd67FU-O_vLedCpIYQaxzloZmKetQIhrGjoYRTDj6eZebNyr_5lW4RuyngC8xGN5RVwA')"></div>
+<span class="material-symbols-outlined text-primary text-3xl z-10">sell</span>
+</div>
+<p class="text-white/80 text-[11px] font-medium tracking-wide uppercase text-center">Smart Price</p>
+</div>
+</div>
+</div>
+<div class="flex w-full flex-row items-center justify-center gap-2 py-2">
+<div class="h-1.5 w-6 rounded-full bg-primary shadow-[0_0_8px_rgba(249,115,22,0.6)]"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+</div>
+<div class="text-center space-y-3 px-1">
+<h2 class="text-white tracking-tight text-[28px] md:text-[32px] font-bold leading-[1.15]">
+                        Your Pocket Guide to <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-200">the Pharaohs</span>
+</h2>
+<p class="text-zinc-400 text-[15px] font-normal leading-relaxed">
+                        Experience Egypt like never before with offline 3D maps, panoramic tours, and smart access to exclusive zones.
+                    </p>
+</div>
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full bg-primary hover:bg-primary-dark active:bg-orange-800 text-white font-bold text-base py-4 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group">
+                        Start Your Journey
+                        <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="w-full bg-white/5 backdrop-blur-sm hover:bg-white/10 active:bg-white/15 border border-white/10 text-white font-semibold text-base py-4 rounded-xl transition-all">
+                        Already have an account? <span class="text-primary hover:text-orange-300 ml-1">Log In</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

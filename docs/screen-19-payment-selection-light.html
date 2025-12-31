@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour Payment Selection</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#F26E21", // Updated slightly more vibrant orange from logo feel
+              "primary-dark": "#D9561B", // Darker shade for hover/active
+              "background": "#FFFFFF",
+              "surface": "#F9F9F9", // Very light grey for backgrounds
+              "surface-hover": "#FFF0E5", // Light orange tint for hovers
+              "text-main": "#2D2D2D",
+              "text-secondary": "#757575",
+              "border-light": "#EBEBEB",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            boxShadow: {
+              'soft': '0 4px 20px rgba(0, 0, 0, 0.04)',
+              'glow': '0 0 15px rgba(242, 110, 33, 0.15)',
+              'card': '0 2px 8px rgba(0,0,0,0.03)',
+            }
+          },
+        },
+      }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F9F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E0E0E0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F26E21;
+        }
+        .radio-checked-border {
+            border-color: #F26E21 !important;
+            background-color: #FFF8F4 !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-display antialiased h-screen flex flex-col overflow-hidden text-text-main selection:bg-primary selection:text-white">
+<div class="flex items-center justify-between px-4 py-4 bg-background shrink-0 z-10 sticky top-0">
+<button class="text-text-main flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-surface transition-colors">
+<span class="material-symbols-outlined font-semibold">arrow_back_ios_new</span>
+</button>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Checkout</h2>
+</div>
+<div class="flex-1 overflow-y-auto w-full relative bg-[#FAFAFA]">
+<div class="flex flex-col gap-8 p-5 pb-32 max-w-lg mx-auto">
+<section>
+<div class="flex items-stretch justify-between gap-5 rounded-2xl bg-white p-5 shadow-card border border-border-light">
+<div class="flex flex-col justify-between py-1 flex-1">
+<div class="space-y-1.5">
+<p class="text-text-secondary text-[11px] font-bold uppercase tracking-widest">Order Summary</p>
+<p class="text-text-main text-[17px] font-extrabold leading-tight">Valley of the Kings</p>
+<p class="text-text-secondary text-sm font-medium leading-normal">Full Tomb Access Pass</p>
+</div>
+<div class="mt-4">
+<p class="text-primary text-xl font-extrabold tracking-tight">EGP 450.00</p>
+</div>
+</div>
+<div class="w-24 bg-center bg-no-repeat bg-cover rounded-xl shrink-0 aspect-[3/4] shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwa6lAYeKS33gwm_ZGzwCzHOPuaK5GXBePWlo7QNHqSviqdid3OEHyHzeflG-CMeoraq8W-hBhfeM9CthD5JtaMaLJn7jHIaGe5uurWMbqN72A28DJ-zQ039F44V-IeP_uM1s4yDCghf-36OqCPsSNXppv36sQEDgSbuo1jWUW96TxJJRjzykAt8Pt6jSYVwhK4Ok2vA3sLkmMgvqG3me1kEnF2AeOMF29Aov5pvwN8NSKkLEsAgXRqF5BrbhvhNIL6oNhKIBEV0Vz");'></div>
+</div>
+</section>
+<section>
+<h3 class="text-text-main text-lg font-bold leading-tight mb-4 px-1">Payment Method</h3>
+<div class="flex flex-col gap-3">
+<label class="group relative flex items-center gap-4 rounded-xl border-2 border-primary bg-[#FFF8F4] p-4 cursor-pointer transition-all shadow-glow">
+<input checked="" class="peer sr-only" name="payment_method" type="radio" value="card"/>
+<div class="size-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-text-main text-[15px] font-bold leading-tight">Credit Card</p>
+<p class="text-text-secondary text-[13px] font-medium leading-normal mt-0.5">Visa, Mastercard, Meeza</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#D1D1D1] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="size-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<label class="group relative flex items-center gap-4 rounded-xl border border-border-light bg-white p-4 cursor-pointer hover:border-primary/30 hover:bg-surface-hover transition-all shadow-sm">
+<input class="peer sr-only" name="payment_method" type="radio" value="apple_pay"/>
+<div class="size-10 rounded-full bg-[#F5F5F5] group-hover:bg-white flex items-center justify-center transition-colors text-text-main">
+<span class="material-symbols-outlined text-[24px]">phone_iphone</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-text-main text-[15px] font-bold leading-tight">Apple Pay</p>
+<p class="text-text-secondary text-[13px] font-medium leading-normal mt-0.5">Fast &amp; Secure</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#D1D1D1] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="size-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<label class="group relative flex items-center gap-4 rounded-xl border border-border-light bg-white p-4 cursor-pointer hover:border-primary/30 hover:bg-surface-hover transition-all shadow-sm">
+<input class="peer sr-only" name="payment_method" type="radio" value="wallet"/>
+<div class="size-10 rounded-full bg-[#F5F5F5] group-hover:bg-white flex items-center justify-center transition-colors text-text-main">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-text-main text-[15px] font-bold leading-tight">Mobile Wallet</p>
+<p class="text-text-secondary text-[13px] font-medium leading-normal mt-0.5">Vodafone Cash, Etisalat</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#D1D1D1] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="size-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+</div>
+</section>
+<section class="space-y-5 pt-2">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-text-main text-lg font-bold leading-tight">Card Details</h3>
+<div class="flex items-center gap-1.5 text-[#10B981] text-[11px] font-bold bg-[#10B981]/10 px-2.5 py-1.5 rounded-md">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+           SSL Secure
+        </div>
+</div>
+<div class="space-y-5 bg-white p-5 rounded-2xl border border-border-light shadow-sm">
+<div class="flex flex-col gap-2">
+<label class="text-text-main text-xs font-bold uppercase tracking-wide ml-1">Card Number</label>
+<div class="flex w-full items-center rounded-xl border border-border-light bg-[#FAFAFA] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 focus-within:bg-white overflow-hidden transition-all h-12">
+<input class="w-full bg-transparent px-4 text-text-main placeholder:text-gray-400 focus:outline-none border-none focus:ring-0 text-[15px] font-semibold tracking-wide" placeholder="0000 0000 0000 0000" type="tel"/>
+<div class="pr-4 text-gray-400">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col gap-2 flex-1">
+<label class="text-text-main text-xs font-bold uppercase tracking-wide ml-1">Expiry Date</label>
+<div class="flex w-full items-center rounded-xl border border-border-light bg-[#FAFAFA] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 focus-within:bg-white overflow-hidden transition-all h-12">
+<input class="w-full bg-transparent px-4 text-text-main placeholder:text-gray-400 focus:outline-none border-none focus:ring-0 text-[15px] font-semibold" placeholder="MM/YY" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<label class="text-text-main text-xs font-bold uppercase tracking-wide ml-1 flex items-center gap-1">
+              CVV
+              <span class="material-symbols-outlined text-[14px] text-gray-400 cursor-help">help</span>
+</label>
+<div class="flex w-full items-center rounded-xl border border-border-light bg-[#FAFAFA] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 focus-within:bg-white overflow-hidden transition-all h-12">
+<input class="w-full bg-transparent px-4 text-text-main placeholder:text-gray-400 focus:outline-none border-none focus:ring-0 text-[15px] font-semibold tracking-wider" maxlength="3" placeholder="123" type="tel"/>
+<div class="pr-4 text-gray-400">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-text-main text-xs font-bold uppercase tracking-wide ml-1">Cardholder Name</label>
+<div class="flex w-full items-center rounded-xl border border-border-light bg-[#FAFAFA] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 focus-within:bg-white overflow-hidden transition-all h-12">
+<input class="w-full bg-transparent px-4 text-text-main placeholder:text-gray-400 focus:outline-none border-none focus:ring-0 text-[15px] font-semibold" placeholder="ex. Ahmed Hassan" type="text"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div class="shrink-0 p-5 bg-white border-t border-border-light z-20 pb-8 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+<button class="w-full h-14 rounded-xl bg-primary hover:bg-primary-dark active:scale-[0.98] text-white text-[16px] font-bold leading-normal flex items-center justify-center gap-3 transition-all shadow-lg shadow-primary/25">
+<span>Pay EGP 450.00</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-center text-[11px] text-text-secondary mt-4 font-medium">
+    By clicking Pay, you agree to our Terms of Service.
+  </p>
+</div>
+<script>
+        // Script to handle radio button styling toggle
+        const radios = document.querySelectorAll('input[name="payment_method"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Reset all labels
+                radios.forEach(r => {
+                    const label = r.closest('label');
+                    label.classList.remove('border-primary', 'shadow-glow', 'bg-[#FFF8F4]');
+                    label.classList.remove('border-2'); // remove active thickness
+                    label.classList.add('border', 'border-border-light', 'bg-white'); // add inactive thickness
+                    // Reset icons backgrounds if any specific styles were applied (optional based on CSS structure)
+                });
+                // Set active label
+                const activeLabel = e.target.closest('label');
+                activeLabel.classList.remove('border', 'border-border-light', 'bg-white');
+                activeLabel.classList.add('border-2', 'border-primary', 'shadow-glow', 'bg-[#FFF8F4]');
+            });
+        });
+    </script>
+
+</body></html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour Payment Selection</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee8c2b",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221910",
+              "surface-dark": "#2d241b", // Slightly lighter than background-dark for cards
+              "surface-input": "#1a130c", // Darker for inputs
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for webkit to match the dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #221910;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d342b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ee8c2b;
+        }
+
+        .radio-checked-border {
+            border-color: #ee8c2b !important;
+            background-color: rgba(238, 140, 43, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased h-screen flex flex-col overflow-hidden text-[#111418] dark:text-white selection:bg-primary selection:text-white">
+<!-- Header -->
+<div class="flex items-center justify-between p-4 pb-2 bg-background-light dark:bg-background-dark shrink-0 z-10">
+<button class="text-[#111418] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Checkout</h2>
+</div>
+<!-- Main Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto w-full relative">
+<div class="flex flex-col gap-6 p-4 pb-32">
+<!-- Order Summary Card -->
+<section>
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-[#e6dbd1] dark:border-[#3d342b]">
+<div class="flex flex-col justify-between flex-[2_2_0px] py-1">
+<div class="space-y-1">
+<p class="text-[#8c7e73] dark:text-[#b9ab9d] text-xs font-semibold uppercase tracking-wider">Order Summary</p>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight">Valley of the Kings</p>
+<p class="text-[#8c7e73] dark:text-[#b9ab9d] text-sm font-medium leading-normal">Full Tomb Access Pass</p>
+</div>
+<div class="mt-3">
+<p class="text-primary text-lg font-bold">EGP 450.00</p>
+</div>
+</div>
+<div class="w-28 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 aspect-[3/4]" data-alt="Golden statue of a pharaoh with dramatic lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwa6lAYeKS33gwm_ZGzwCzHOPuaK5GXBePWlo7QNHqSviqdid3OEHyHzeflG-CMeoraq8W-hBhfeM9CthD5JtaMaLJn7jHIaGe5uurWMbqN72A28DJ-zQ039F44V-IeP_uM1s4yDCghf-36OqCPsSNXppv36sQEDgSbuo1jWUW96TxJJRjzykAt8Pt6jSYVwhK4Ok2vA3sLkmMgvqG3me1kEnF2AeOMF29Aov5pvwN8NSKkLEsAgXRqF5BrbhvhNIL6oNhKIBEV0Vz");'></div>
+</div>
+</section>
+<!-- Payment Method Selection -->
+<section>
+<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight mb-4">Payment Method</h3>
+<div class="flex flex-col gap-3">
+<!-- Credit Card (Selected) -->
+<label class="group relative flex items-center gap-4 rounded-xl border-2 border-primary bg-white dark:bg-surface-dark p-4 cursor-pointer transition-all shadow-[0_0_15px_rgba(238,140,43,0.1)]">
+<input checked="" class="peer sr-only" name="payment_method" type="radio" value="card"/>
+<span class="material-symbols-outlined text-primary text-3xl">credit_card</span>
+<div class="flex grow flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal">Credit Card</p>
+<p class="text-[#8c7e73] dark:text-[#b9ab9d] text-sm font-normal leading-normal">Visa, Mastercard, Meeza</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#d0c4b9] dark:border-[#54473b] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+</label>
+<!-- Apple Pay -->
+<label class="group relative flex items-center gap-4 rounded-xl border border-[#e6dbd1] dark:border-[#3d342b] bg-white dark:bg-surface-dark p-4 cursor-pointer hover:border-primary/50 transition-all">
+<input class="peer sr-only" name="payment_method" type="radio" value="apple_pay"/>
+<span class="material-symbols-outlined text-[#111418] dark:text-white text-3xl">phone_iphone</span>
+<div class="flex grow flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal">Apple Pay</p>
+<p class="text-[#8c7e73] dark:text-[#b9ab9d] text-sm font-normal leading-normal">Fast &amp; Secure</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#d0c4b9] dark:border-[#54473b] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+</label>
+<!-- Mobile Wallet -->
+<label class="group relative flex items-center gap-4 rounded-xl border border-[#e6dbd1] dark:border-[#3d342b] bg-white dark:bg-surface-dark p-4 cursor-pointer hover:border-primary/50 transition-all">
+<input class="peer sr-only" name="payment_method" type="radio" value="wallet"/>
+<span class="material-symbols-outlined text-[#111418] dark:text-white text-3xl">account_balance_wallet</span>
+<div class="flex grow flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal">Mobile Wallet</p>
+<p class="text-[#8c7e73] dark:text-[#b9ab9d] text-sm font-normal leading-normal">Vodafone Cash, Etisalat</p>
+</div>
+<div class="size-5 rounded-full border-2 border-[#d0c4b9] dark:border-[#54473b] peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Card Details Form -->
+<section class="space-y-4 pt-2">
+<div class="flex items-center justify-between">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Card Details</h3>
+<div class="flex items-center gap-1 text-[#4CAF50] text-xs font-medium bg-[#4CAF50]/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                         SSL Secure
+                    </div>
+</div>
+<div class="space-y-4">
+<!-- Card Number -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Card Number</label>
+<div class="flex w-full items-center rounded-lg border border-[#e6dbd1] dark:border-[#3d342b] bg-[#fcfaf8] dark:bg-surface-input focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all h-14">
+<input class="w-full bg-transparent p-4 text-[#111418] dark:text-white placeholder:text-[#8c7e73] dark:placeholder:text-[#6e6359] focus:outline-none border-none focus:ring-0 text-base font-medium" placeholder="0000 0000 0000 0000" type="tel"/>
+<div class="pr-4 text-[#8c7e73] dark:text-[#b9ab9d]">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<!-- Expiry Date -->
+<div class="flex flex-col gap-1.5 flex-1">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Expiry Date</label>
+<div class="flex w-full items-center rounded-lg border border-[#e6dbd1] dark:border-[#3d342b] bg-[#fcfaf8] dark:bg-surface-input focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all h-14">
+<input class="w-full bg-transparent p-4 text-[#111418] dark:text-white placeholder:text-[#8c7e73] dark:placeholder:text-[#6e6359] focus:outline-none border-none focus:ring-0 text-base font-medium" placeholder="MM/YY" type="text"/>
+</div>
+</div>
+<!-- CVV -->
+<div class="flex flex-col gap-1.5 flex-1">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal flex items-center gap-1">
+                                CVV
+                                <span class="material-symbols-outlined text-[16px] text-[#8c7e73] cursor-help">help</span>
+</label>
+<div class="flex w-full items-center rounded-lg border border-[#e6dbd1] dark:border-[#3d342b] bg-[#fcfaf8] dark:bg-surface-input focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all h-14">
+<input class="w-full bg-transparent p-4 text-[#111418] dark:text-white placeholder:text-[#8c7e73] dark:placeholder:text-[#6e6359] focus:outline-none border-none focus:ring-0 text-base font-medium" maxlength="4" placeholder="123" type="tel"/>
+<div class="pr-4 text-[#8c7e73] dark:text-[#b9ab9d]">
+<span class="material-symbols-outlined">lock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cardholder Name -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Cardholder Name</label>
+<div class="flex w-full items-center rounded-lg border border-[#e6dbd1] dark:border-[#3d342b] bg-[#fcfaf8] dark:bg-surface-input focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all h-14">
+<input class="w-full bg-transparent p-4 text-[#111418] dark:text-white placeholder:text-[#8c7e73] dark:placeholder:text-[#6e6359] focus:outline-none border-none focus:ring-0 text-base font-medium" placeholder="ex. Ahmed Hassan" type="text"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Footer -->
+<div class="shrink-0 p-4 bg-background-light dark:bg-background-dark border-t border-[#e6dbd1] dark:border-[#3d342b] z-20 pb-8">
+<button class="w-full h-14 rounded-xl bg-primary hover:bg-[#d97d22] active:bg-[#bf6e1e] text-white text-base font-bold leading-normal flex items-center justify-center gap-3 transition-colors shadow-lg shadow-primary/20">
+<span>Pay EGP 450.00</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-[#8c7e73] dark:text-[#6e6359] mt-3">
+            By clicking Pay, you agree to our Terms of Service.
+        </p>
+</div>
+<script>
+        // Simple script to handle radio button styling toggle
+        const radios = document.querySelectorAll('input[name="payment_method"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Reset all labels
+                radios.forEach(r => {
+                    const label = r.closest('label');
+                    label.classList.remove('border-primary', 'shadow-[0_0_15px_rgba(238,140,43,0.1)]');
+                    label.classList.remove('border-2'); // remove active thickness
+                    label.classList.add('border', 'border-[#e6dbd1]', 'dark:border-[#3d342b]'); // add inactive thickness
+                });
+
+                // Set active label
+                const activeLabel = e.target.closest('label');
+                activeLabel.classList.remove('border', 'border-[#e6dbd1]', 'dark:border-[#3d342b]');
+                activeLabel.classList.add('border-2', 'border-primary', 'shadow-[0_0_15px_rgba(238,140,43,0.1)]');
+            });
+        });
+    </script>
+</body></html>

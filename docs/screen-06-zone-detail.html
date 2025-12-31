@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour - Zone Detail</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF4F00","primary-hover": "#E64600",
+                        "background-light": "#f0f0f0",
+                        "background-dark": "#050505","card-dark": "#121212","surface": "#1E1E1E",
+                        "border-subtle": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "none": "0",
+                        "sm": "0.125rem",
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }.bg-grid {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-body antialiased selection:bg-primary/30">
+<div class="relative min-h-screen w-full flex flex-col pb-32">
+<header class="relative w-full h-[45vh] min-h-[400px] flex-shrink-0 border-b border-primary/20">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center grayscale-[30%] contrast-125" data-alt="Valley of the Kings landscape with mountains and blue sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD82yOaRNNoTp2HSRiI_ILw_qQ-M-o4tnBPokFZNGk6LXoeT0CJynk9SmrQLX_IGyAay4laTmcLazswpnPB-LD7MY576PkpwUm7qbfSdzpknRkY70sIWjmO7eJOnnyIktcLR7pWD2w5ECbJUNHWBCJE3IFr7xXYQQtvfVrXs6coJarmEEN_YhbDPlqhwNoJUAT9meNhHOSKuqzBoVRquT6O9cuh0dDNJztRvWG4EGz6QDNSgOgPgmjdpZqGwXZ0NCBsWWbiIycWWRYr');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-background-dark"></div>
+<div class="absolute inset-0 bg-grid-pattern bg-grid opacity-20 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+<nav class="absolute top-0 left-0 w-full p-5 pt-14 flex items-center justify-between z-20">
+<button class="flex items-center justify-center w-11 h-11 rounded-md bg-black/40 backdrop-blur-md border border-white/20 text-white hover:border-primary hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-11 h-11 rounded-md bg-black/40 backdrop-blur-md border border-white/20 text-white hover:border-primary hover:text-primary transition-all group active:scale-95">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">download</span>
+</button>
+<button class="flex items-center justify-center w-11 h-11 rounded-md bg-black/40 backdrop-blur-md border border-white/20 text-white hover:border-primary hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</nav>
+<div class="absolute bottom-0 left-0 w-full px-6 pb-8 z-10">
+<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center">
+<span class="px-3 py-1 rounded-sm bg-primary text-black text-[10px] font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(255,79,0,0.4)]">
+                            Premium Zone
+                        </span>
+</div>
+<div class="h-[1px] w-8 bg-white/30"></div>
+<span class="px-2 py-0.5 rounded-sm bg-white/5 backdrop-blur-md border border-white/20 text-white text-xs font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary filled">star</span>
+                        4.8
+                    </span>
+</div>
+<h1 class="text-4xl md:text-5xl font-display font-bold text-white leading-[0.9] tracking-tight uppercase drop-shadow-xl mb-3">
+                    Valley of<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">the Kings</span>
+</h1>
+<div class="flex items-center gap-2 text-gray-400 text-xs font-mono uppercase tracking-wide">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span data-location="Luxor">Luxor, West Bank</span>
+<span class="text-primary">•</span>
+<span>Zone ID: KV-ZN01</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-6 h-16 w-[1px] bg-primary z-10"></div>
+</header>
+<main class="relative z-10 px-6 -mt-2">
+<div class="mb-10 pl-4 border-l-2 border-white/10">
+<p class="text-gray-300 text-sm leading-relaxed font-light">
+                    The ancient burial ground of pharaohs, hidden in the Theban hills. Discover the tombs of Tutankhamun, Ramses, and other legendary rulers in this vast necropolis.
+                    <button class="text-primary font-bold ml-1 hover:text-white transition-colors uppercase text-xs tracking-wide">Read more <span class="text-[10px]">↗</span></button>
+</p>
+</div>
+<div class="mb-10 group cursor-pointer relative">
+<div class="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-primary/50"></div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-primary/50"></div>
+<div class="relative w-full h-52 rounded-md overflow-hidden bg-card-dark border border-white/10 group-hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="360 view inside an ancient Egyptian tomb with hieroglyphics" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNNJXlziAw4Svwq88pfQYr16ETCKGC8tQqLm4ew9r2gzdlGISGWyJVo7lXOmujEHkiMa7OYpsqCJQTEIcfMOV8Ggs7tOgm_Sb1hcA7mJmTY_rdaWj3JYF6LITQ-aF_0xDJiP-SOmcojVZzQmdnzqrQ3lN12txC95cWfBpnNkaQsQXkUVY3vHXrSPDDJR1gS3zcUSb5WO1V2pvEjJ-4RflqAbpfmfyGIyKtiQND2JVWfKthqPFaaebISPhbVUKlGcz4YI3mXr3ife47');">
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex flex-col items-center justify-center backdrop-grayscale-[0.5]">
+<div class="w-16 h-16 rounded-md bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:border-primary group-hover:bg-primary/20 transition-all shadow-2xl">
+<span class="material-symbols-outlined text-white group-hover:text-primary text-4xl font-light">360</span>
+</div>
+<p class="text-white font-display font-bold text-xs tracking-[0.2em] uppercase mt-4 border-b border-primary pb-1">Enter Virtual Tour</p>
+</div>
+<div class="absolute top-4 right-4 px-2 py-1 bg-black/80 backdrop-blur-sm text-[10px] font-mono text-primary uppercase border border-primary/30">
+                        Interactive • 3D
+                    </div>
+</div>
+</div>
+<div class="flex items-center border-b border-white/10 mb-6 sticky top-[80px] z-20 bg-background-dark/95 backdrop-blur-xl -mx-6 px-6 pt-2">
+<button class="pb-3 border-b-2 border-primary text-white font-display font-bold text-sm tracking-wide mr-8 uppercase">Landmarks</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-white font-display font-medium text-sm tracking-wide mr-8 transition-colors uppercase">History</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-white font-display font-medium text-sm tracking-wide transition-colors uppercase">Map</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="group flex items-center gap-4 p-3 rounded-md bg-card-dark border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-white/10 group-hover:bg-primary transition-colors"></div>
+<div class="relative h-16 w-20 shrink-0 rounded-sm overflow-hidden bg-gray-900">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Golden mask of Tutankhamun" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgQ5mF-m7LdsUGLuPc4YeaUPg5cAwWqZXIw0HyZjlJrF6DXLqCkBVkD3x5TItzPlpJv8Rw1yfPEwabNccVdeva8Y-7Cs90Y-QI5_iTuIx2Jfozccp86620ncxJnj1-6J1U9A_YkCY0T15xhMIkccMGPjs-PdylT5XkD2HX8Ac2l2etNUKKIcNq4EAWjfD9pbudDSMgAV9t_WwiJUUux6m-OTzOZ5mR_YHOnug5yJMOEIo4ZC76xFvRunaXtMJvfDlFTN0dUfGiWwBg');"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/60 text-xl">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-display font-semibold text-sm truncate uppercase tracking-wide">Tomb of Tutankhamun</h3>
+<p class="text-gray-500 text-[10px] mt-1 font-mono uppercase">Code: KV62 • Discovery</p>
+</div>
+<div class="text-gray-600 group-hover:text-primary transition-colors pr-2">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-3 rounded-md bg-card-dark border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-white/10 group-hover:bg-primary transition-colors"></div>
+<div class="relative h-16 w-20 shrink-0 rounded-sm overflow-hidden bg-gray-900">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Intricate hieroglyphics on a tomb wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMuJu4yi-zl58oarABpwl1TccofWHjQlPyBhHTbXGLraNVT0eyykLkhwQXCA40mVXC_whqXoyR5ozV_SyXBQqty49Nl1Flw23kYH1MncKgbsKYXWNnhji52NuFkC1Ll22yyF3ycrCX-Z-nSKOg_KXgdDZf_YzYay4RG_y1m-11gnuweJIMp21j5UNGrrz9Mdzr-wZIqJNtBCzEos5RebLMsyT7MbfpCnDdyllkh01-FBuwoj3FFA5XNMR4NOyfgovfJ0k19OlC9A_M');"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/60 text-xl">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-display font-semibold text-sm truncate uppercase tracking-wide">Tomb of Ramses VI</h3>
+<p class="text-gray-500 text-[10px] mt-1 font-mono uppercase">Code: KV9 • Detailed</p>
+</div>
+<div class="text-gray-600 group-hover:text-primary transition-colors pr-2">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-3 rounded-md bg-surface border border-primary/30 hover:border-primary transition-all relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-primary"></div>
+<div class="relative h-16 w-20 shrink-0 rounded-sm overflow-hidden bg-gray-900 border border-white/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Entrance to the tomb of Merneptah" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyOWod8sT9zWxO4B1YrARQgCpwuepDQYT48EIiMVaTp39-dg2XzZ32THWiu1M2aro9_noAkPM8YzzZvCwa9N-fwSVvgEkT3VBSXqK5jvoq3hFN7VMDgV3yHaRu-NarJCNt56UEN5mfMpDCtYx7F_ZX_m9Oowy17ftCb-2JpayMZE3qP9oNpgec63uBAqh5ToC5HvLeqvHM6M086BSYnQQxKnzr5pdmdVxIkDSKfdJt29p1zoxK3vC_aVVG3sOgCSbA54gboYnIxXRP');"></div>
+<div class="absolute top-0 right-0 bg-primary text-black text-[8px] font-bold px-1.5 py-0.5 uppercase">
+                            Free
+                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-display font-semibold text-sm truncate uppercase tracking-wide">Tomb of Merneptah</h3>
+<p class="text-primary/80 text-[10px] mt-1 font-mono uppercase">Code: KV8 • Deepest</p>
+</div>
+<div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_10px_rgba(255,79,0,0.3)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-black text-xl filled">play_arrow</span>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-3 rounded-md bg-card-dark border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-white/10 group-hover:bg-primary transition-colors"></div>
+<div class="relative h-16 w-20 shrink-0 rounded-sm overflow-hidden bg-gray-900">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Columns inside an ancient Egyptian temple" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAW1cVBI-RqC1-77gYeMwaZ_Q3nSsW1q58K3vadfFWODfjEqI4Wd3mA2La2bpQtjtg1SnQ4oGJOvgXUZ3-2W860rkJ7C78CDEsoVVAlMiQ9kbf7VibhDMHDxppqClbq9Kug6696eAofugAuDzJ0KXOzr6ytLR2z6U72AJ9ARDh-MUN8ixWdJQngIbNLluSkWhcf7RQflkGnJRn5s1v8JHzkMMEErWN7BHRd5Gsw01MgWRIqlvaS11seH7s8FsTcYRXmXwRmAjE-XbCT');"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/60 text-xl">lock</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-white font-display font-semibold text-sm truncate uppercase tracking-wide">Tomb of Seti I</h3>
+<p class="text-gray-500 text-[10px] mt-1 font-mono uppercase">Code: KV17 • Longest</p>
+</div>
+<div class="text-gray-600 group-hover:text-primary transition-colors pr-2">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 w-full z-50">
+<div class="h-12 w-full bg-gradient-to-t from-background-dark to-transparent pointer-events-none"></div>
+<div class="bg-background-dark/95 backdrop-blur-md border-t border-white/10 pb-8 pt-4 px-6">
+<div class="flex items-center justify-between gap-6 max-w-lg mx-auto">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary font-mono uppercase tracking-widest mb-1">Total Access</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-display font-bold text-white tracking-tight">$4.99</span>
+<span class="text-sm text-gray-600 font-mono line-through decoration-gray-600">$8.00</span>
+</div>
+</div>
+<button class="flex-1 h-14 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all text-black font-display font-bold text-sm rounded-sm shadow-[0_0_20px_rgba(255,79,0,0.25)] flex items-center justify-center gap-3 uppercase tracking-wider group">
+<span>Unlock Zone</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">lock_open</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

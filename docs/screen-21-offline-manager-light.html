@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offline Content Manager - Egytour</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF4D00",
+                        "primary-dark": "#E04400",
+                        "secondary": "#475569",
+                        "bg-page": "#FAFAFA",
+                        "surface": "#FFFFFF",
+                        "border-light": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                        "glow": "0 0 15px rgba(255, 77, 0, 0.15)"
+                    }
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 2px;
+        }
+        .architectural-grid {
+            background-color: #FAFAFA;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-page font-body text-slate-800 antialiased selection:bg-primary/20 selection:text-primary min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl overflow-hidden architectural-grid border-x border-border-light bg-bg-page">
+<div class="sticky top-0 z-30 flex items-center bg-white/90 backdrop-blur-xl px-5 py-4 justify-between border-b border-border-light shadow-sm">
+<button class="text-slate-800 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-xl font-medium">arrow_back</span>
+</button>
+<h2 class="text-base font-display font-bold uppercase tracking-widest text-slate-800 flex-1 text-center pr-10">Offline Manager</h2>
+</div>
+<div class="px-5 pt-6 pb-2">
+<div class="flex justify-between items-baseline mb-4">
+<h2 class="text-xs font-display font-bold uppercase tracking-wider text-slate-500">Device Storage</h2>
+<div class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-primary bg-primary/5 px-2 py-1 rounded-full border border-primary/10">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                    High Speed
+                </div>
+</div>
+<div class="bg-surface rounded-2xl p-6 shadow-soft border border-border-light relative overflow-hidden">
+<div class="absolute right-0 top-0 h-full w-32 opacity-[0.03] bg-[repeating-linear-gradient(45deg,#000,#000_1px,transparent_1px,transparent_10px)]"></div>
+<div class="relative z-10 flex flex-col gap-5">
+<div class="flex gap-4 justify-between items-end">
+<div>
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1.5">Used Space</p>
+<div class="flex items-baseline gap-1">
+<span class="text-slate-800 text-4xl font-display font-extrabold tracking-tight">1.2</span>
+<span class="text-xl font-display font-bold text-primary">GB</span>
+</div>
+</div>
+<div class="text-right pb-1">
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Capacity</p>
+<p class="text-slate-600 text-base font-mono font-medium">256 GB</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="relative h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(255,77,0,0.4)]" style="width: 45%;"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 font-mono font-medium">
+<span>0%</span>
+<span>50%</span>
+<span>100%</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-slate-50">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<p class="text-slate-500 text-xs font-medium">
+<span class="text-slate-800 font-bold">Egytour</span> uses <span class="text-slate-800 font-bold">0.5%</span> of total storage.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<div class="sticky top-[72px] z-20 bg-bg-page/95 backdrop-blur-sm pt-4 border-b border-border-light">
+<div class="flex px-5 gap-6 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-slate-900 pb-3 min-w-fit" href="#">
+<p class="text-sm font-display font-bold uppercase tracking-wide">All Content</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-400 hover:text-slate-600 pb-3 transition-colors min-w-fit" href="#">
+<p class="text-sm font-display font-bold uppercase tracking-wide">Downloaded</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-400 hover:text-slate-600 pb-3 transition-colors relative min-w-fit" href="#">
+<p class="text-sm font-display font-bold uppercase tracking-wide">Updates</p>
+<span class="absolute top-0 -right-1 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col flex-1 pb-32 px-5 mt-6 space-y-4">
+<div class="group relative flex bg-surface p-3.5 rounded-xl shadow-sm hover:shadow-soft transition-all duration-300 border border-slate-100 hover:border-primary/30">
+<div class="relative shrink-0 mr-4">
+<div class="bg-center bg-no-repeat bg-cover h-[88px] w-[88px] rounded-lg bg-gray-200 grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 shadow-inner" data-alt="Golden pyramids against a clear blue sky" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjLcBAspPo5Gv6h5PQG9RIEZQAviLN8EykYBhYfq-dxvgEXwrTzzb8nkKDTr8YXxKJTNe81cdKMsBu-MdsAl-aAL7ktEcptEuKMrU5VKJb8VxHkyfvUFZcrCuk17M5lIqC7Ec6Rjr1V8R59O4wJGVy4H4jesMDErvJpgUMGc2VY33rbQk82ajkd5Y9_31RaReFLlyOJU2AQXJDdWKaU1PGz8OnXUUkEetb26IXHAmJdTReO-vtp9jC1whTYLmRRKFhuc1LDItz2LRc");'></div>
+<div class="absolute -bottom-2 -right-2 bg-slate-900 text-white p-1 rounded-md shadow-md z-10 scale-90">
+<span class="material-symbols-outlined text-sm font-bold block">check</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0 py-1">
+<h3 class="text-slate-900 text-[17px] font-display font-bold leading-tight truncate mb-1.5">Great Pyramid</h3>
+<div class="flex flex-wrap items-center gap-2 mb-2.5">
+<span class="inline-flex items-center bg-orange-50 text-primary border border-orange-100 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide">Full Zone</span>
+<span class="text-slate-400 text-xs font-mono font-medium">450 MB</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 text-[10px] uppercase tracking-wide font-bold">
+<span class="flex items-center gap-1 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-100"><span class="material-symbols-outlined text-[14px]">view_in_ar</span> 3D Map</span>
+<span class="flex items-center gap-1 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-100"><span class="material-symbols-outlined text-[14px]">headphones</span> Audio</span>
+</div>
+</div>
+<button class="shrink-0 self-start mt-2 ml-1 h-8 w-8 flex items-center justify-center rounded-lg bg-slate-50 text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all border border-slate-100">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="group relative flex bg-surface p-3.5 rounded-xl shadow-soft ring-1 ring-primary/20 transition-all duration-300">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary rounded-l-xl"></div>
+<div class="relative shrink-0 mr-4">
+<div class="bg-center bg-no-repeat bg-cover h-[88px] w-[88px] rounded-lg bg-gray-200" data-alt="Majestic columns of Luxor Temple at sunset" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSgcM1Q2gJfq77bxSwI-4d2IMMr3Ny9rX-wvdw0f6XN6W2nQ4XV13r5WaufBdmAKNhz6Qx6g-lG2uNozZ20_VJtZJFXqPKp9hBdxWu2rTY3oudG80DPKosDvaJPiAyIwzBxkCjznA83ZE_amg7VsPqFh0ta4_WdexRRuqYdz0eEfq6z47XdoszPcUQ9LadyI_92kdroinWtvv4gF7SdN_TgXOIoeco3mMJymLdD-BOHAIb8nQWaaQ3_2PbdRWRKPf5SN5jF07ZSCVq");'></div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white p-1 rounded-md shadow-md z-10 animate-bounce scale-90">
+<span class="material-symbols-outlined text-sm font-bold block">arrow_upward</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0 py-1">
+<h3 class="text-slate-900 text-[17px] font-display font-bold leading-tight truncate mb-1.5">Luxor Temple</h3>
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-flex items-center bg-primary text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide shadow-sm">Update v2.1</span>
+<span class="text-slate-400 text-xs font-mono font-medium">120 MB</span>
+</div>
+<p class="text-slate-500 text-xs leading-snug">New excavation content added.</p>
+</div>
+<button class="shrink-0 self-center ml-2 h-10 w-10 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary-dark transition-all shadow-glow hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-xl">update</span>
+</button>
+</div>
+<div class="group relative flex bg-surface/60 p-3.5 rounded-xl shadow-sm border border-slate-100 hover:bg-surface hover:border-slate-300 transition-all duration-300">
+<div class="relative shrink-0 mr-4">
+<div class="bg-center bg-no-repeat bg-cover h-[88px] w-[88px] rounded-lg bg-gray-200 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100" data-alt="Colorful lanterns in Khan el-Khalili market" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1mVj5N1vHaBRLQw_ndrEOgKWOO0O-FkwivLJOkQF6lN_7irAFZN4XuB3vtog5FM_J6EM-2VNOCV-aq88Hq-jxfvPJBGhya9jq29jD9g-tJAneeDf1IbwzQxGPcjzQJwu_CNJDZXMd-xZ1HoZrNwFNFMMOLMe8m0qT-2yuPJHFS5IXbotrEgJdugrDG-zn9WCKoMhlGTa4_tg8EpCQG4Oi9fH_mCgpjAGWOJ_98XM10TZPM3EQbbeYE6bJvOhr5nirMtmbBsQbPFfV");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0 py-1">
+<h3 class="text-slate-700 group-hover:text-slate-900 text-[17px] font-display font-bold leading-tight truncate mb-1.5 transition-colors">Khan el-Khalili</h3>
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-flex items-center bg-slate-100 text-slate-500 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide">Map Only</span>
+<span class="text-slate-400 text-xs font-mono font-medium">85 MB</span>
+</div>
+<p class="text-slate-400 text-xs truncate">Offline navigation &amp; shop index</p>
+</div>
+<button class="shrink-0 self-center ml-2 h-10 w-10 flex items-center justify-center rounded-full border-2 border-slate-200 text-slate-400 group-hover:border-primary group-hover:text-primary transition-all bg-white">
+<span class="material-symbols-outlined text-xl">download</span>
+</button>
+</div>
+<div class="group relative flex bg-surface p-3.5 rounded-xl shadow-sm hover:shadow-soft transition-all duration-300 border border-slate-100 hover:border-primary/30">
+<div class="relative shrink-0 mr-4">
+<div class="bg-center bg-no-repeat bg-cover h-[88px] w-[88px] rounded-lg bg-gray-200 grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 shadow-inner" data-alt="Statues inside the Egyptian Museum" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1mVj5N1vHaBRLQw_ndrEOgKWOO0O-FkwivLJOkQF6lN_7irAFZN4XuB3vtog5FM_J6EM-2VNOCV-aq88Hq-jxfvPJBGhya9jq29jD9g-tJAneeDf1IbwzQxGPcjzQJwu_CNJDZXMd-xZ1HoZrNwFNFMMOLMe8m0qT-2yuPJHFS5IXbotrEgJdugrDG-zn9WCKoMhlGTa4_tg8EpCQG4Oi9fH_mCgpjAGWOJ_98XM10TZPM3EQbbeYE6bJvOhr5nirMtmbBsQbPFfV");'></div>
+<div class="absolute -bottom-2 -right-2 bg-slate-900 text-white p-1 rounded-md shadow-md z-10 scale-90">
+<span class="material-symbols-outlined text-sm font-bold block">check</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0 py-1">
+<h3 class="text-slate-900 text-[17px] font-display font-bold leading-tight truncate mb-1.5">Egyptian Museum</h3>
+<div class="flex flex-wrap items-center gap-2 mb-2.5">
+<span class="inline-flex items-center bg-slate-800 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide">Hall 4</span>
+<span class="text-slate-400 text-xs font-mono font-medium">210 MB</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 text-[10px] uppercase tracking-wide font-bold">
+<span class="flex items-center gap-1 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-100"><span class="material-symbols-outlined text-[14px]">texture</span> Hi-Res</span>
+</div>
+</div>
+<button class="shrink-0 self-start mt-2 ml-1 h-8 w-8 flex items-center justify-center rounded-lg bg-slate-50 text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all border border-slate-100">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="group relative flex bg-surface/60 p-3.5 rounded-xl shadow-sm border border-slate-100 hover:bg-surface hover:border-slate-300 transition-all duration-300">
+<div class="relative shrink-0 mr-4">
+<div class="bg-center bg-no-repeat bg-cover h-[88px] w-[88px] rounded-lg bg-gray-200 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100" data-alt="Rugged terrain of Valley of the Kings" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSgcM1Q2gJfq77bxSwI-4d2IMMr3Ny9rX-wvdw0f6XN6W2nQ4XV13r5WaufBdmAKNhz6Qx6g-lG2uNozZ20_VJtZJFXqPKp9hBdxWu2rTY3oudG80DPKosDvaJPiAyIwzBxkCjznA83ZE_amg7VsPqFh0ta4_WdexRRuqYdz0eEfq6z47XdoszPcUQ9LadyI_92kdroinWtvv4gF7SdN_TgXOIoeco3mMJymLdD-BOHAIb8nQWaaQ3_2PbdRWRKPf5SN5jF07ZSCVq");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0 py-1">
+<h3 class="text-slate-700 group-hover:text-slate-900 text-[17px] font-display font-bold leading-tight truncate mb-1.5 transition-colors">Valley of Kings</h3>
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-flex items-center bg-orange-50 text-primary border border-orange-100 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide">Full Zone</span>
+<span class="text-slate-400 text-xs font-mono font-medium">1.1 GB</span>
+</div>
+<p class="text-slate-400 text-xs truncate">Comprehensive Tour</p>
+</div>
+<button class="shrink-0 self-center ml-2 h-10 w-10 flex items-center justify-center rounded-full border-2 border-slate-200 text-slate-400 group-hover:border-primary group-hover:text-primary transition-all bg-white">
+<span class="material-symbols-outlined text-xl">download</span>
+</button>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-bg-page via-bg-page/80 to-transparent pointer-events-none flex justify-center z-40 max-w-md mx-auto">
+<button class="pointer-events-auto shadow-xl shadow-primary/20 bg-primary text-white font-display font-bold uppercase tracking-wider py-3.5 px-8 rounded-full flex items-center gap-3 hover:bg-primary-dark transition-all transform hover:-translate-y-1 active:scale-95 border border-primary-dark/20">
+<span class="material-symbols-outlined">cleaning_services</span>
+                Free up space
+            </button>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Building Detail Screen - Egytour</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF6B00",
+                        "primary-dark": "#E05500",
+                        "primary-soft": "#FFF0E5",
+                        "secondary": "#4A4A4A",
+                        "background-light": "#FFFFFF",
+                        "background-offset": "#F7F7F7",
+                        "surface-card": "#FFFFFF",
+                        "text-main": "#1A1A1A",
+                        "text-sub": "#666666",
+                        "border-light": "#E5E5E5",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 10px rgba(0,0,0,0.03)',
+                        'floating': '0 10px 30px -10px rgba(255, 107, 0, 0.25)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-offset font-display antialiased text-text-main pb-28 selection:bg-primary selection:text-white">
+<div class="relative w-full h-[45vh] min-h-[320px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Majestic front view of the Great Sphinx of Giza against a clear blue sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuljWlavS9nS9T0CTosCOUzvgeQEhtwwY1-RLhZBRuTYrxNVRJHdXj8-QtyEejJ7wvsG2Q4tfJpLnubAi-9oL4bOgwIy_ZaiL2Q_wUPBzqWhXo8QAhuTGX4yirtzQLcSc8TuoDfK7mCOKrPwCkrrn8U6_6OlqqeuzkPY9CVab-xF_2a-2fnh7hmb-rIXdRyacPArC0ZxOE7tifbnCeffAkFpmH9gv07XZDm2MRIPGfx7Okuvrqpx_rjNvAjumwtL8HtYRH8XmLp7jC');">
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-background-offset"></div>
+</div>
+<div class="absolute top-0 left-0 right-0 p-5 flex items-center justify-between z-10 pt-14">
+<button class="flex items-center justify-center size-10 rounded-full bg-white/90 backdrop-blur-md shadow-sm text-text-main hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex gap-3">
+<button class="flex items-center justify-center size-10 rounded-full bg-white/90 backdrop-blur-md shadow-sm text-text-main hover:text-red-500 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full bg-white/90 backdrop-blur-md shadow-sm text-text-main hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+<div class="flex items-end justify-between">
+<div>
+<div class="flex items-center gap-2 text-primary bg-white/90 w-fit px-2 py-1 rounded-md backdrop-blur-sm text-xs font-bold tracking-widest uppercase mb-3 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>Giza Plateau, Egypt</span>
+</div>
+<h1 class="text-4xl font-extrabold text-text-main leading-none mb-1 tracking-tight drop-shadow-sm">The Great Sphinx</h1>
+</div>
+<div class="flex flex-col items-end mb-1">
+<div class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg shadow-soft">
+<span class="material-symbols-outlined text-primary text-[18px] filled">star</span>
+<span class="text-text-main font-bold text-sm">4.8</span>
+<span class="text-text-sub text-xs">(1.2k)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col px-6 -mt-2 gap-8 bg-background-offset rounded-t-3xl">
+<div class="flex items-center justify-between text-sm text-text-sub border-b border-border-light py-5">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-full bg-primary-soft text-primary">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</div>
+<span class="font-semibold text-text-main">2.5 km</span>
+</div>
+<div class="w-px h-8 bg-border-light"></div>
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-full bg-primary-soft text-primary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<span class="text-green-600 font-semibold">Open Now</span>
+</div>
+<div class="w-px h-8 bg-border-light"></div>
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-full bg-primary-soft text-primary">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+</div>
+<span class="font-semibold text-text-main">~2h visit</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<button class="relative group flex flex-col items-center justify-center gap-3 bg-surface-card p-4 rounded-2xl shadow-card border border-transparent hover:border-primary/20 hover:shadow-soft transition-all">
+<div class="absolute top-2 right-2 text-primary/60">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="size-12 rounded-xl bg-primary-soft flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined">view_in_ar</span>
+</div>
+<span class="text-xs font-bold text-text-main uppercase tracking-wide">3D View</span>
+</button>
+<button class="relative group flex flex-col items-center justify-center gap-3 bg-surface-card p-4 rounded-2xl shadow-card border border-transparent hover:border-primary/20 hover:shadow-soft transition-all">
+<div class="absolute top-2 right-2 text-primary/60">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="size-12 rounded-xl bg-primary-soft flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined">360</span>
+</div>
+<span class="text-xs font-bold text-text-main uppercase tracking-wide">Panoramic</span>
+</button>
+<button class="relative group flex flex-col items-center justify-center gap-3 bg-surface-card p-4 rounded-2xl shadow-card border border-transparent hover:border-primary/20 hover:shadow-soft transition-all">
+<div class="size-12 rounded-xl bg-primary-soft flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined">headphones</span>
+</div>
+<span class="text-xs font-bold text-text-main uppercase tracking-wide">Audio Intro</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<h2 class="text-xl font-bold text-text-main">About the Landmark</h2>
+</div>
+<div class="relative bg-white p-5 rounded-2xl shadow-card border border-border-light/50">
+<p class="text-text-sub text-sm leading-7 font-body">
+                The Great Sphinx of Giza is a limestone statue of a reclining sphinx, a mythical creature with the head of a human and the body of a lion. Facing directly from West to East, it stands on the Giza Plateau...
+            </p>
+<button class="text-primary text-sm font-bold mt-2 hover:text-primary-dark transition-colors flex items-center gap-1">
+                Read more <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<h2 class="text-xl font-bold text-text-main">Unlockable Content</h2>
+</div>
+<span class="text-[10px] font-black uppercase tracking-widest text-white bg-secondary px-3 py-1.5 rounded-full shadow-sm">Premium</span>
+</div>
+<div class="flex overflow-x-auto gap-4 no-scrollbar -mx-6 px-6 pb-4">
+<div class="relative flex-none w-60 aspect-[3/4] rounded-2xl overflow-hidden group shadow-lg">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Detailed close up of the Sphinx face" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYM2JHrqMIxS94tbLD5QQVUP_8MuftqIalpizlr7Ln1MPdec-MMqNQvc4ctZjGEb5wLd9LhQzamYx0I_ScsRRhNm4feB-R3iStkX4e6-ZzHj8l31XVBi7K7H-1q-wzMDr43z6Png8fdM9XQBHS9sEWbp0mfL6MD0_117wnPwRWMhNOuwEGChWeiytFbYArkdOPK12RNfahY1ne9ckFEffdaJd1_vvfxiQQxUlWwL3__ogERdpySDipq2qQrcemPvxLO4G9_LGnJIqy');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-1.5 rounded-lg border border-white/30 text-white">
+<span class="material-symbols-outlined text-[16px] block">lock</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex items-center gap-1.5 mb-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">view_in_ar</span>
+<span class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm">AR Model</span>
+</div>
+<p class="text-white font-bold text-lg leading-tight drop-shadow-md">Interactive 3D Statue</p>
+</div>
+</div>
+<div class="relative flex-none w-60 aspect-[3/4] rounded-2xl overflow-hidden group shadow-lg">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Panoramic view of the Giza pyramid complex at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQTFB0tUXD13tMbUbtYnkr_n6HAFjzlIqPZyMD6NFAdo7oKZrWBT9WBAZ_1-TeUCLGiN8KxV5km026eTnefBYy6j0i7QUWkOTBCbdFduZwMOtHNJFaEdk_00n22FaKcpbV1Bz7GsDtVrFRDVZJgNSaSweiYhDJ5JdenRKInvtFdZqHkGdhvswwXfwQx11F8dhCXZ_hyFnA1Vu1-dMVFPNGc6ZYK2fwb3OQ7I1cMOqsRQOrIreKhor7x3T3ZysrnaEs_8KKY-Um9PEH');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-1.5 rounded-lg border border-white/30 text-white">
+<span class="material-symbols-outlined text-[16px] block">lock</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex items-center gap-1.5 mb-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">360</span>
+<span class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm">360° Tour</span>
+</div>
+<p class="text-white font-bold text-lg leading-tight drop-shadow-md">Sunset Panorama</p>
+</div>
+</div>
+<div class="relative flex-none w-60 aspect-[3/4] rounded-2xl overflow-hidden group shadow-lg">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Ancient hieroglyphics on a stone wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQQqvGWBxL0bTrd_1xDMORI9mY4t5GZXmi64C-HBrkZbraKuLOL6AHEdv7C9JX56Z37ztaIO871eIkyG0o4cnMN4ezQ8WoT6qY5Uffo5WVSxk_oyU5rkeR5eGdhAeNQy2dv_FmgE07ZigbQaaEqB7c-xS-HslrqQ7CySqmkESXSc4motVbH8GDkkHs6WrVCggiOjJb7fwjgYH3n6aTTVN_1zKzEuQgIqFJ1lZqV8Ef5RX3VOEHvkqyzAxLlB9m3EPoyjh0FKiZ3WSe');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-1.5 rounded-lg border border-white/30 text-white">
+<span class="material-symbols-outlined text-[16px] block">lock</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex items-center gap-1.5 mb-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">headphones</span>
+<span class="text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm">Audio</span>
+</div>
+<p class="text-white font-bold text-lg leading-tight drop-shadow-md">Hidden History Guide</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<h2 class="text-xl font-bold text-text-main">Visitor Reviews</h2>
+</div>
+<button class="text-primary text-sm font-semibold hover:text-primary-dark transition-colors">View All</button>
+</div>
+<div class="bg-surface-card p-5 rounded-2xl shadow-card border border-border-light/50">
+<div class="flex items-center gap-3 mb-3">
+<div class="size-10 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xs shadow-md">JS</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main">John Smith</span>
+<div class="flex text-primary text-[12px] gap-0.5">
+<span class="material-symbols-outlined filled text-[14px]">star</span>
+<span class="material-symbols-outlined filled text-[14px]">star</span>
+<span class="material-symbols-outlined filled text-[14px]">star</span>
+<span class="material-symbols-outlined filled text-[14px]">star</span>
+<span class="material-symbols-outlined filled text-[14px]">star</span>
+</div>
+</div>
+<span class="ml-auto text-xs text-text-sub font-mono bg-background-offset px-2 py-1 rounded-md">2d ago</span>
+</div>
+<p class="text-text-sub text-sm leading-relaxed">The AR experience was mind-blowing! Seeing the Sphinx restored to its original colors changed my entire perspective.</p>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 w-full bg-white/95 backdrop-blur-xl border-t border-border-light pb-8 pt-4 px-6 shadow-[0_-5px_30px_rgba(0,0,0,0.08)] z-50">
+<div class="flex items-center justify-between gap-5">
+<div class="flex flex-col">
+<span class="text-text-sub text-[10px] uppercase font-bold tracking-wider mb-0.5">Single Access</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-extrabold text-primary tracking-tight">$2.99</span>
+<span class="text-sm text-text-sub line-through font-medium opacity-60">$4.99</span>
+</div>
+</div>
+<button class="flex-1 bg-primary hover:bg-primary-dark text-white font-bold h-14 rounded-2xl flex items-center justify-center gap-2 shadow-floating transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">lock_open</span>
+<span class="uppercase tracking-wide text-sm">Unlock Access</span>
+</button>
+</div>
+<div class="flex justify-center mt-3">
+<div class="flex items-center gap-1.5 text-[10px] text-text-sub font-semibold bg-background-offset px-3 py-1 rounded-full border border-border-light/60">
+<span class="material-symbols-outlined text-[14px] text-green-600">wifi_off</span>
+<span>Content available offline</span>
+</div>
+</div>
+</div>
+</body></html>

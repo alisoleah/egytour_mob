@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>City Map View - Egytour</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#F26522", // Updated to a slightly brighter orange from the logo style
+                        "primary-dark": "#D1490E",
+                        "background-light": "#F8F9FA",
+                        "surface-light": "#FFFFFF",
+                        "text-main": "#333333",
+                        "text-muted": "#6B7280",
+                        "border-light": "#E5E7EB"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "heading": ["Oswald", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "sm": "0.25rem",
+                        "md": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "clean": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)",
+                        "float": "0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }@keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1); }
+            100% { transform: scale(0.8); }
+        }
+        .pin-ring {
+            animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        .pin-dot {
+            animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light font-display h-screen w-full overflow-hidden relative text-text-main">
+<div class="absolute inset-0 z-0 bg-gray-100">
+<div class="w-full h-full bg-cover bg-center opacity-40" data-alt="Light map view of Egypt" data-location="Egypt Map" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjdpLNhJ2qDsMjFaQeinh9Fe55BX272YWCHRvx5mf1i5-_VR2iqFcgGvCxFJOWOuDtGGM-yyfpxK4RUJoKX0nnDXxO4By0ubMh8E-1mJKQ3-bpM8YaRH7ztVn_vCWiF59nuFScE71GskHbvdAjPujuf_WRHFSgIbm6XV01_-XWwnD41KGpjDfsWt2ObjV8k1HOeph2HTscTd73pl8FO0geKHwuXQ1Lb_Ggi2yS6G_NYTUDTsZja63Ga8xUe9HPMoVSsHafTnpylVGw'); filter: grayscale(100%) contrast(110%) brightness(130%);">
+</div>
+<div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="absolute top-[35%] left-[45%] flex flex-col items-center gap-2 cursor-pointer group z-10">
+<div class="relative flex items-center justify-center w-10 h-10">
+<div class="absolute w-full h-full bg-primary/20 rounded-full pin-ring"></div>
+<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(242,101,34,0.4)] pin-dot border-2 border-white"></div>
+</div>
+<span class="font-heading uppercase tracking-widest text-xs font-bold text-white bg-primary px-3 py-1.5 rounded-full shadow-lg">Giza Plateau</span>
+</div>
+<div class="absolute top-[55%] left-[52%] flex flex-col items-center gap-1 cursor-pointer opacity-90 hover:opacity-100 transition-opacity group">
+<span class="material-symbols-outlined text-primary-dark text-4xl drop-shadow-sm group-hover:scale-110 transition-transform">location_on</span>
+<span class="font-heading uppercase text-[10px] tracking-wider font-bold text-text-main bg-white/90 px-2 py-1 rounded-md shadow-sm border border-border-light">Luxor</span>
+</div>
+<div class="absolute top-[20%] left-[38%] flex flex-col items-center gap-1 cursor-pointer opacity-80 hover:opacity-100 transition-opacity group">
+<span class="material-symbols-outlined text-gray-600 text-3xl drop-shadow-sm group-hover:text-primary transition-colors">location_on</span>
+<span class="font-heading uppercase text-[10px] tracking-wider font-bold text-text-main bg-white/90 px-2 py-1 rounded-md shadow-sm border border-border-light">Alexandria</span>
+</div>
+</div>
+<div class="absolute top-0 left-0 w-full z-20 flex flex-col gap-4 p-4 pt-14 bg-gradient-to-b from-white/90 via-white/60 to-transparent">
+<label class="flex flex-col w-full h-12 shadow-float rounded-xl">
+<div class="flex w-full flex-1 items-stretch rounded-xl bg-surface-light border border-border-light overflow-hidden">
+<div class="text-primary flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden text-text-main focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-muted px-4 pl-3 text-sm font-display tracking-wide placeholder:normal-case" placeholder="Search for temples, cities..." value=""/>
+</div>
+</label>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 px-1">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 bg-primary text-white pl-4 pr-5 rounded-full shadow-md active:scale-95 transition-transform border border-transparent">
+<span class="material-symbols-outlined text-[18px]">temple_hindu</span>
+<p class="text-xs font-bold uppercase tracking-wider font-heading">Historical</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 bg-white text-text-main border border-gray-200 pl-4 pr-5 rounded-full shadow-sm active:scale-95 transition-transform hover:border-primary/50 hover:text-primary">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary text-[18px]">waves</span>
+<p class="text-xs font-bold uppercase tracking-wider font-heading">Coastal</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 bg-white text-text-main border border-gray-200 pl-4 pr-5 rounded-full shadow-sm active:scale-95 transition-transform hover:border-primary/50 hover:text-primary">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary text-[18px]">location_city</span>
+<p class="text-xs font-bold uppercase tracking-wider font-heading">Urban</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 bg-white text-text-main border border-gray-200 pl-4 pr-5 rounded-full shadow-sm active:scale-95 transition-transform hover:border-primary/50 hover:text-primary">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary text-[18px]">local_activity</span>
+<p class="text-xs font-bold uppercase tracking-wider font-heading">Free Entry</p>
+</button>
+</div>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4 items-end">
+<button class="flex size-12 items-center justify-center bg-white rounded-full shadow-float text-gray-700 active:bg-primary active:text-white transition-colors border border-gray-100">
+<span class="material-symbols-outlined">explore</span>
+</button>
+<div class="flex flex-col gap-[1px] bg-gray-200 rounded-xl overflow-hidden shadow-float border border-white">
+<button class="flex size-10 items-center justify-center bg-white hover:bg-gray-50 text-gray-700 active:bg-primary active:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="flex size-10 items-center justify-center bg-white hover:bg-gray-50 text-gray-700 active:bg-primary active:text-white transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+<div class="absolute right-4 bottom-[320px] z-20">
+<button class="flex size-14 items-center justify-center rounded-full bg-primary shadow-float text-white active:scale-95 transition-all hover:bg-primary-dark">
+<span class="material-symbols-outlined text-2xl">my_location</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 w-full z-30 pb-8 pt-4">
+<div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white via-white/80 to-transparent -z-10"></div>
+<div class="flex overflow-x-auto no-scrollbar px-4 gap-4 snap-x snap-mandatory pb-4">
+<div class="flex-none w-[85%] max-w-[320px] snap-center flex flex-col gap-0 bg-surface-light rounded-2xl shadow-float overflow-hidden group border border-border-light">
+<div class="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Great Pyramid of Giza with clear blue sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOhk2G3pCy8_GjjDGp1S9IIDQjZaUhhRredyLhkMfQvC_Bu4wGp-L8IXuPYEUJZt1jnPpLLsFbYfthOY3pVjg8RTKxbztJNWOM-4YNwEDt2RzxihZjIyBjKRD2wJBrNaQY5XAfnwg4pNVo96exJZly4GQgjq_J79KyfTKpKXo9qffKVxY7WCtH3YPoR2cTzrfccZ8IGmFQKEjwePSeCvMs1pngH5ZDXoxN_1jLDCnQ0z0KOuX4gXXPAg8Ta2kpG_oaS8kmKED-ZHeW');">
+</div>
+<div class="absolute top-3 left-3 flex">
+<span class="px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-widest font-heading rounded-md shadow-sm">
+                        Featured
+                   </span>
+</div>
+<div class="absolute top-3 right-3 flex flex-col gap-2 items-end">
+<span class="size-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-gray-800">view_in_ar</span>
+</span>
+<span class="size-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">offline_pin</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-3">
+<div class="flex justify-between items-start">
+<div class="w-full">
+<h3 class="text-text-main text-xl font-heading font-bold uppercase tracking-wide leading-tight">Giza Plateau</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-primary font-bold text-xs uppercase tracking-wider">12 Zones</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-text-muted text-xs font-display">From $15.00</span>
+</div>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center h-10 bg-text-main hover:bg-primary transition-colors text-white text-xs font-bold uppercase tracking-widest font-heading rounded-lg shadow-sm mt-1">
+                        Explore Zones
+                        <span class="material-symbols-outlined text-sm ml-2">arrow_outward</span>
+</button>
+</div>
+</div>
+<div class="flex-none w-[85%] max-w-[320px] snap-center flex flex-col gap-0 bg-surface-light rounded-2xl shadow-float overflow-hidden group border border-border-light">
+<div class="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Columns of Luxor Temple illuminated at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOmHbArhC7xNmwnlmNjQVnjkqfyaU97oTh0KRDUyCji6Si_1RbNDm0nxn9nOVkzD6V0-IF31TpaDDNdApA7hPppNy__GfgD8wFxIAH9dp9Gdq2tsc7fWKFZjZlcgYhv9UwPKVajBgDRGU7KiZI6zYtx-txmdMn-zjcdmU18f3_jtREbxQX2i0bMbHkD9NMcz2ElDnw41406jx693n6XDBzmsdyDnnDZfeX8eGqRgZ-Q_RYtL4k-IFNnK46l_XjjSmbreh1IjTgXCJW');">
+</div>
+<div class="absolute top-3 right-3 flex gap-1">
+<span class="size-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-gray-800">360</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-3">
+<div class="flex justify-between items-start">
+<div class="w-full">
+<h3 class="text-text-main text-xl font-heading font-bold uppercase tracking-wide leading-tight">Luxor Temple</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-text-muted text-xs font-bold uppercase tracking-wider">8 Zones</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-text-muted text-xs font-display">From $12.00</span>
+</div>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center h-10 bg-white hover:bg-gray-50 text-text-main transition-colors text-xs font-bold uppercase tracking-widest font-heading rounded-lg border border-gray-200">
+                        Explore Zones
+                </button>
+</div>
+</div>
+<div class="flex-none w-[85%] max-w-[320px] snap-center flex flex-col gap-0 bg-surface-light rounded-2xl shadow-float overflow-hidden group border border-border-light">
+<div class="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Citadel of Qaitbay in Alexandria by the sea" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLor2Qs_KkoR_SkujXvQYIOUzFpLWT1kGBsU9l6zhFOGk2StAzIQuI9zt1c_H747kdTPZBiRaaQB1gyBStr6hBcoNY_2-6NJvddo0nPHMQXPmueMwArcqAi7gzQyv3tsZzwQF838POiAtBHSGNlY9moDxcLMyaROChAR_-NTFNshGqTp2wtFiF0LzudS7h2L4JMv3Uy-Y2H1or4a3LDUYwDFwbwiHTz2oLkUXNPwnKFLHZcwvaW-MoNk2wh02njVfEOdj82xGz4QMW');">
+</div>
+</div>
+<div class="flex flex-col p-4 gap-3">
+<div class="flex justify-between items-start">
+<div class="w-full">
+<h3 class="text-text-main text-xl font-heading font-bold uppercase tracking-wide leading-tight">Alexandria</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-text-muted text-xs font-bold uppercase tracking-wider">5 Zones</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-text-muted text-xs font-display">Coastal</span>
+</div>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center h-10 bg-white hover:bg-gray-50 text-text-main transition-colors text-xs font-bold uppercase tracking-widest font-heading rounded-lg border border-gray-200">
+                        Explore Zones
+                </button>
+</div>
+</div>
+<div class="w-2 shrink-0"></div>
+</div>
+</div>
+</body></html>

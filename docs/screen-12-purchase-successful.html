@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Purchase Successful</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f48c25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'subtle-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48c25' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Main Container -->
+<div class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark bg-subtle-pattern group/design-root overflow-hidden font-display transition-colors duration-300">
+<!-- Top Header (Close Button) -->
+<div class="flex items-center justify-between p-6">
+<div class="w-10"></div> <!-- Spacer for centering if needed -->
+<button class="flex size-10 items-center justify-center rounded-full bg-white/60 dark:bg-black/20 hover:bg-black/5 dark:hover:bg-white/10 transition-colors backdrop-blur-sm">
+<span class="material-symbols-outlined text-[#181411] dark:text-white" style="font-size: 24px;">close</span>
+</button>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 flex flex-col justify-center items-center px-6 w-full max-w-md mx-auto z-10">
+<!-- Success Hero Section -->
+<div class="flex flex-col items-center text-center gap-6 mb-10 w-full animate-fade-in-up">
+<!-- Animated-feel Icon Wrapper -->
+<div class="relative mb-2">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150"></div>
+<div class="relative size-28 rounded-full bg-white dark:bg-[#2e2318] flex items-center justify-center shadow-lg ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-size: 64px;">check_circle</span>
+</div>
+<!-- Decorative dots -->
+<div class="absolute top-0 right-0 h-3 w-3 rounded-full bg-primary animate-ping"></div>
+<div class="absolute bottom-2 left-2 h-2 w-2 rounded-full bg-primary/60"></div>
+</div>
+<div class="space-y-3">
+<h1 class="text-[#181411] dark:text-white text-4xl font-extrabold tracking-tight leading-tight">
+                        Zone Unlocked!
+                    </h1>
+<p class="text-[#8a7560] dark:text-[#b0a69a] text-lg font-medium leading-relaxed max-w-xs mx-auto">
+                        You have successfully unlocked the <span class="text-[#181411] dark:text-white font-bold">Giza Necropolis Zone</span>.
+                    </p>
+</div>
+</div>
+<!-- Receipt/Summary Card -->
+<div class="w-full bg-white dark:bg-[#2e2318] p-5 rounded-2xl shadow-sm border border-[#e6e0db] dark:border-[#42362b] flex gap-5 items-center transform transition-transform hover:scale-[1.02] duration-300">
+<!-- Thumbnail -->
+<div class="h-24 w-24 shrink-0 bg-center bg-cover rounded-xl shadow-inner relative overflow-hidden group" data-alt="Golden pyramids of Giza under a bright blue sky" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9sYRDrSI_3rT5IVxhEH0F_5Wa055NQmMO-iy16r290D-kLWWOfcgSvDIyxrviBhm1mQpN6pLdo7XjXYVog3d07ex3S8YANbxquSVxDmX_zpFd0uTFlAZj5sEontRMD9PMLDOtwv9_XqLINnWeFr5bEFYDDpfT651sWDCIkyUcEkV-P3li61tXqmOrGdQKLW9zAqcokS26L55znwZzC8S8uJbtF-vHAG_tfr346AkhIeUtEayqcXXXiMs0ziatpwjxW-mX6QM6RasT");'>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<!-- Details -->
+<div class="flex flex-col flex-1 gap-1.5 justify-center">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-0.5 rounded-full self-start">Purchased</span>
+</div>
+<h3 class="text-xl font-bold text-[#181411] dark:text-white leading-tight">Giza Full Access</h3>
+<div class="h-px w-full bg-[#e6e0db] dark:bg-[#42362b] my-1"></div>
+<div class="flex items-center justify-between">
+<span class="text-base font-semibold text-[#181411] dark:text-white">$15.00</span>
+<span class="text-xs font-mono text-[#8a7560] dark:text-[#b0a69a]">ID: #8839210</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Area -->
+<div class="w-full max-w-md mx-auto px-6 pb-10 pt-6 flex flex-col gap-4 mt-auto z-10">
+<button class="w-full group h-14 bg-primary rounded-full text-white font-bold text-lg hover:bg-orange-600 active:scale-[0.98] transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-3">
+<span>Start Exploring</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" style="font-size: 20px;">arrow_forward</span>
+</button>
+<button class="text-[#8a7560] dark:text-[#b0a69a] font-medium text-sm hover:text-[#181411] dark:hover:text-white transition-colors py-2">
+                Return to Map
+            </button>
+</div>
+</div>
+</body></html>

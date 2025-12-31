@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour - Language Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF6B00", // Architectural Orange from logo
+                        "primary-dark": "#E65100", // Darker orange for hover/active
+                        "background-light": "#FAFAFA", // Off-white background
+                        "surface-light": "#FFFFFF", // White panels
+                        "surface-highlight": "#F5F5F5", // Light grey highlight
+                        "text-main": "#1A1A1A", // Dark grey text
+                        "text-muted": "#757575", // Muted grey text
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(255, 107, 0, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>.custom-radio:checked {
+    background-color: #FF6B00;
+    border-color: #FF6B00;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAFTDbLCEMaCYm9MuRHcQkhrXoRhTGTmsFFI5HimAK8fW5JFsOXvstOo1YB4GPKr3OWcbqRVugukHCoYZjLCbxAsR0jOWbkXQYeU5Igx9h3hDg6GjJ8EQILDs7KctqkdgVL-CYgZzJ4Gl-1ntPq20QAdP6vzgkFDzgAnXTotieSLd8gY0E6yeh3q17JsTMWYy5sf9wBxXSI8vEVthOuexvN3NeVj7dqSbqsAU3RBubNmXUMOTdlqCOyrPEVRMB3d2ISzu-SuZUOCIe4)
+    }
+body::-webkit-scrollbar {
+    display: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light font-display text-text-main antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col relative overflow-hidden">
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[20%] -right-[20%] w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl"></div>
+<div class="absolute top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-orange-100/50 blur-3xl"></div>
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<div class="relative z-10 flex flex-col flex-grow w-full max-w-md mx-auto h-full px-8 pt-12 pb-8">
+<header class="flex flex-col gap-6 mb-10">
+<div class="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center shadow-soft relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors"></div>
+<span class="material-symbols-outlined text-primary text-4xl z-10">temple_hindu</span>
+</div>
+<div class="space-y-1">
+<p class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 flex items-center gap-2">
+<span class="w-8 h-[2px] bg-primary"></span>
+                Configuration
+            </p>
+<h1 class="text-4xl font-extrabold tracking-tight text-text-main leading-[1.1]">
+                Select<br/>
+<span class="text-text-muted font-light">Language</span>
+</h1>
+</div>
+</header>
+<div class="flex flex-col gap-4 w-full">
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-light border border-gray-100 shadow-sm rounded-2xl transition-all duration-300 hover:border-primary hover:shadow-hover hover:-translate-y-1">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-5 pl-2">
+<div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-xl shadow-inner group-hover:bg-white transition-colors">
+                    🇬🇧
+                </div>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-text-main group-hover:text-primary transition-colors">English</span>
+<span class="text-xs text-text-muted font-medium">Default</span>
+</div>
+</div>
+<div class="relative">
+<input checked="" class="custom-radio appearance-none h-6 w-6 border-2 border-gray-200 rounded-full bg-white focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" name="language" type="radio"/>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-light border border-gray-100 shadow-sm rounded-2xl transition-all duration-300 hover:border-primary hover:shadow-hover hover:-translate-y-1">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-5 pl-2">
+<div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-xl shadow-inner group-hover:bg-white transition-colors">
+                    🇫🇷
+                </div>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-text-main group-hover:text-primary transition-colors">Français</span>
+<span class="text-xs text-text-muted font-medium">French</span>
+</div>
+</div>
+<div class="relative">
+<input class="custom-radio appearance-none h-6 w-6 border-2 border-gray-200 rounded-full bg-white focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" name="language" type="radio"/>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-5 cursor-pointer bg-surface-light border border-gray-100 shadow-sm rounded-2xl transition-all duration-300 hover:border-primary hover:shadow-hover hover:-translate-y-1">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-primary rounded-r-full opacity-0 scale-y-50 group-hover:opacity-100 group-hover:scale-y-100 transition-all duration-300"></div>
+<div class="flex items-center gap-5 pl-2">
+<div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-xl shadow-inner group-hover:bg-white transition-colors">
+                    🇪🇬
+                </div>
+<div class="flex flex-col items-start">
+<span class="text-lg font-bold text-text-main group-hover:text-primary transition-colors font-display" lang="ar">العربية</span>
+<span class="text-xs text-text-muted font-medium">Arabic</span>
+</div>
+</div>
+<div class="relative">
+<input class="custom-radio appearance-none h-6 w-6 border-2 border-gray-200 rounded-full bg-white focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" name="language" type="radio"/>
+</div>
+</label>
+</div>
+<div class="flex-grow"></div>
+<div class="relative mt-8">
+<div class="flex justify-between items-center mb-6 px-2">
+<div class="flex items-center gap-2 text-text-muted/60">
+<span class="material-symbols-outlined text-[18px]">wifi_off</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">Offline</span>
+</div>
+<div class="flex items-center gap-2 text-text-muted/60">
+<span class="text-[10px] uppercase font-bold tracking-widest">3D View</span>
+<span class="material-symbols-outlined text-[18px]">view_in_ar</span>
+</div>
+</div>
+<button class="group w-full h-16 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all rounded-xl flex items-center justify-between px-2 pl-6 shadow-lg shadow-orange-500/30 overflow-hidden relative">
+<div class="absolute inset-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] bg-[position:200%_0,0_0] bg-no-repeat group-hover:bg-[position:-100%_0,0_0] transition-[background-position] duration-[1500ms]"></div>
+<span class="text-white text-lg font-extrabold uppercase tracking-widest z-10">Start Journey</span>
+<div class="bg-white text-primary w-12 h-12 rounded-lg flex items-center justify-center shadow-sm group-hover:translate-x-1 transition-transform z-10">
+<span class="material-symbols-outlined text-2xl font-bold">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egytour - Language Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17b0cf",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#111e21",
+                        "surface-dark": "#1a2c30",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>/* Custom radio input styling to match theme */
+.custom-radio:checked {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBdrdLBonE8htsGXtEXGqTfKksx4rEGsy1LcidQUR9cFQoZghUuKnRwBZS0-UxtzP1oIiquz4NxI9vlA9IEOf1G4ZRMiAexTFZxNuJoeBB53SmE_T-vpLtsquRfLARd78X57PIZp6SpTK2PXqh-EccovSR7sjxWn8oBDhgahwKp1gcoBV96t6GdgVKkso4Cx6sL-nOZzAQVn--OU8UfFdwBFd4rq8XimUHaikkJ_Qvzp36HifPaQ62mxlxpetYp_eLhpmDhsUkArvaN);
+    border-color: #17b0cf
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111718] dark:text-white antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden">
+<!-- Background Image with Gradients -->
+<div class="absolute top-0 left-0 w-full h-[55vh] z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Dark aesthetic photo of the Great Pyramids of Giza under a starry sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMIKaZ7kYibK6n_9593uOJc1hxArlXXicjNAKTqRak18AFALGHzgNrDzRlFHBaCyUsYHPYuZ49afs2faR4KVCnppZbA3hll1a-82pSCdFij0S-gl9m0WK0HKDFMAALS6pXm9UDT44ljgY8IBWRdE9u9LrRqd3cj0uLq6gaiLIgxvJWxi2uLIz4PM-eb0_KPm9Bjnj7PmpqzKTCsq6ksZ4prOTN6du0MwoEBFA6SZ9jAJCsr8rzOtNJwOXFQBM7RnYt-KcMCj4ZWgXL');">
+</div>
+<!-- Overlay to dim image -->
+<div class="absolute inset-0 bg-background-dark/40"></div>
+<!-- Gradient to blend into background color -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/80 to-background-dark"></div>
+</div>
+<!-- Main Content Wrapper -->
+<div class="relative z-10 flex flex-col flex-grow px-6 pt-12 pb-6 w-full max-w-md mx-auto h-full">
+<!-- Logo Section -->
+<div class="flex justify-center mb-6">
+<div class="flex items-center gap-2 bg-background-dark/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-primary text-3xl">temple_hindu</span>
+<span class="text-xl font-bold tracking-tight text-white">Egytour</span>
+</div>
+</div>
+<!-- Headlines -->
+<div class="text-center mb-8 mt-4">
+<h1 class="text-white text-4xl font-extrabold tracking-tight leading-tight mb-3 drop-shadow-lg">
+                    Welcome to <span class="text-primary">Egypt</span>
+</h1>
+<p class="text-gray-300 text-base font-medium leading-relaxed max-w-[280px] mx-auto">
+                    Choose your preferred language to begin your journey.
+                </p>
+</div>
+<!-- Language Selection List -->
+<div class="flex flex-col gap-4 w-full" style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(23,176,207)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
+<!-- English Option -->
+<label class="language-card group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-surface-dark/50 backdrop-blur-md p-4 cursor-pointer transition-all duration-200 hover:bg-surface-dark/80 hover:border-white/20">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-2xl shadow-inner">
+                        🇬🇧
+                    </div>
+<div class="flex flex-col grow">
+<p class="text-white text-lg font-bold leading-tight">English</p>
+<p class="text-gray-400 text-sm font-medium">Default</p>
+</div>
+<div class="relative flex items-center justify-center">
+<input checked="" class="custom-radio appearance-none h-6 w-6 border-2 border-gray-500 rounded-full bg-transparent checked:border-primary focus:outline-none transition-all duration-200" name="language" type="radio"/>
+</div>
+</label>
+<!-- French Option -->
+<label class="language-card group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-surface-dark/50 backdrop-blur-md p-4 cursor-pointer transition-all duration-200 hover:bg-surface-dark/80 hover:border-white/20">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-2xl shadow-inner">
+                        🇫🇷
+                    </div>
+<div class="flex flex-col grow">
+<p class="text-white text-lg font-bold leading-tight">Français</p>
+<p class="text-gray-400 text-sm font-medium">French</p>
+</div>
+<div class="relative flex items-center justify-center">
+<input class="custom-radio appearance-none h-6 w-6 border-2 border-gray-500 rounded-full bg-transparent checked:border-primary focus:outline-none transition-all duration-200" name="language" type="radio"/>
+</div>
+</label>
+<!-- Arabic Option -->
+<label class="language-card group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-surface-dark/50 backdrop-blur-md p-4 cursor-pointer transition-all duration-200 hover:bg-surface-dark/80 hover:border-white/20">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-2xl shadow-inner">
+                        🇪🇬
+                    </div>
+<!-- Using flex-row-reverse internally for this specific item to mimic RTL feel while keeping layout LTR for the list -->
+<div class="flex flex-col grow items-end">
+<p class="text-white text-lg font-bold leading-tight font-[sans-serif]" dir="rtl" lang="ar">العربية</p>
+<p class="text-gray-400 text-sm font-medium" dir="rtl" lang="ar">Arabic</p>
+</div>
+<div class="relative flex items-center justify-center">
+<input class="custom-radio appearance-none h-6 w-6 border-2 border-gray-500 rounded-full bg-transparent checked:border-primary focus:outline-none transition-all duration-200" name="language" type="radio"/>
+</div>
+</label>
+</div>
+<!-- Spacer to push button to bottom -->
+<div class="flex-grow"></div>
+<!-- Bottom CTA -->
+<div class="pt-8 w-full">
+<button class="group relative w-full flex items-center justify-center gap-2 overflow-hidden rounded-xl h-14 bg-primary text-background-dark text-lg font-bold tracking-wide shadow-[0_0_20px_rgba(23,176,207,0.3)] transition-all active:scale-[0.98] hover:shadow-[0_0_30px_rgba(23,176,207,0.5)]">
+<span>Start Exploring</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<p class="text-center text-gray-500 text-xs mt-4">
+                    By continuing, you agree to our Terms of Service
+                </p>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zone Purchase Confirmation</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f48c25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#181411", // Keeping the dark tone from the provided components
+                        "surface-dark": "#27211b",
+                        "surface-lighter": "#393028",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #181411;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #393028;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f48c25;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full max-w-md mx-auto flex-col overflow-x-hidden border-x border-surface-dark/50">
+<!-- Header -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md p-4 justify-between border-b border-white/5">
+<button class="text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">close</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Confirm Purchase</h2>
+<button class="flex h-10 px-2 items-center justify-end rounded-full hover:bg-white/5 transition-colors">
+<p class="text-primary text-sm font-bold leading-normal tracking-wide shrink-0">Help</p>
+</button>
+</div>
+<!-- Main Content Scroll Area -->
+<div class="flex-1 overflow-y-auto pb-32">
+<!-- Hero Card -->
+<div class="p-4 pt-6">
+<div class="flex flex-col items-stretch justify-start rounded-2xl overflow-hidden shadow-2xl shadow-black/40 bg-surface-dark border border-white/5">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover group" data-alt="Ancient Egyptian Karnak Temple columns at sunset with dramatic lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLf3cqnqAR-JWToBU0k9jWBObql5Bx8J6zm7fT_9fQrg5Mro9J5rHFwWqJWISSdlVNXkxLT0DmOwsvXZVFctlzAPw98OXoYglmgr0FZrXg2_a_BGKOd10fsu5hNaumYvTC5Iu07-oMKI-ngYRkrFnar1ewo7lKBjzY0QjSlgcd_iNYOH-NnwIAMH7-i-8C2R12_VO4PKC0osMQqG9lv2UzJZnvlyx2bAyCT9ocAmDOGOChXfaT7a8WDlbkavhYecPvQWdaBLWXsRyP");'>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm">star</span>
+<span class="text-xs font-bold text-white uppercase tracking-wider">Premium Zone</span>
+</div>
+</div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-2 p-5 -mt-2 relative z-10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-primary text-xs font-bold tracking-widest uppercase mb-1">Featured Zone</p>
+<h3 class="text-white text-2xl font-extrabold leading-tight tracking-tight uppercase">Karnak Temple</h3>
+</div>
+<div class="bg-primary/10 px-3 py-2 rounded-lg border border-primary/20">
+<p class="text-primary text-xl font-bold leading-none">$4.99</p>
+</div>
+</div>
+<p class="text-neutral-400 text-sm font-medium leading-relaxed mt-1">Unlock the mysteries of the largest religious building ever constructed.</p>
+</div>
+</div>
+</div>
+<!-- Inclusions Checklist -->
+<div class="px-6 py-2">
+<h4 class="text-white/60 text-xs font-bold uppercase tracking-wider mb-3 ml-1">Package Includes</h4>
+<div class="bg-surface-lighter/50 rounded-xl p-4 border border-white/5 space-y-3">
+<div class="flex gap-x-3 items-center">
+<div class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
+</div>
+<p class="text-white text-sm font-medium leading-normal">2-Hour Audio Guided Tour</p>
+</div>
+<div class="flex gap-x-3 items-center">
+<div class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined" style="font-size: 16px;">view_in_ar</span>
+</div>
+<p class="text-white text-sm font-medium leading-normal">3D Temple Reconstruction AR</p>
+</div>
+<div class="flex gap-x-3 items-center">
+<div class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined" style="font-size: 16px;">wifi_off</span>
+</div>
+<p class="text-white text-sm font-medium leading-normal">Offline Mode Access</p>
+</div>
+</div>
+</div>
+<!-- Payment Method -->
+<div class="px-6 py-4">
+<h4 class="text-white/60 text-xs font-bold uppercase tracking-wider mb-3 ml-1">Payment Method</h4>
+<button class="w-full flex items-center gap-4 bg-surface-dark hover:bg-surface-lighter transition-colors p-4 rounded-xl border border-white/5 group">
+<div class="bg-white rounded p-1 h-8 w-12 flex items-center justify-center shrink-0">
+<!-- Placeholder for Apple Pay SVG icon logic, using text for simplicity in this constrained output, ideally an SVG -->
+<span class="text-black font-bold text-[10px] leading-none">Apple Pay</span>
+</div>
+<div class="flex flex-col items-start flex-1">
+<p class="text-white text-sm font-semibold leading-normal group-hover:text-primary transition-colors">Apple Pay</p>
+<p class="text-neutral-500 text-xs font-medium">Mastercard ending in 1234</p>
+</div>
+<span class="material-symbols-outlined text-neutral-500 group-hover:text-white transition-colors">chevron_right</span>
+</button>
+</div>
+<!-- Summary Stats -->
+<div class="px-6 pb-4">
+<div class="flex items-center justify-between py-3 border-t border-white/5">
+<span class="text-neutral-400 text-sm">Subtotal</span>
+<span class="text-white text-sm font-medium">$4.99</span>
+</div>
+<div class="flex items-center justify-between py-3 border-t border-white/5">
+<span class="text-neutral-400 text-sm">Tax</span>
+<span class="text-white text-sm font-medium">$0.00</span>
+</div>
+<div class="flex items-center justify-between py-3 border-t border-white/10 mt-1">
+<span class="text-white text-base font-bold">Total</span>
+<span class="text-2xl font-bold text-white tracking-tight">$4.99 <span class="text-xs font-normal text-neutral-500 align-middle">USD</span></span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="fixed bottom-0 left-0 w-full bg-background-dark/80 backdrop-blur-xl border-t border-white/10 pb-8 pt-4 px-4 z-40 max-w-md mx-auto right-0">
+<div class="flex flex-col gap-3">
+<button class="relative w-full h-14 bg-primary hover:bg-orange-500 active:scale-[0.98] transition-all rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(244,140,37,0.3)] group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+<span class="material-symbols-outlined text-white font-bold">lock</span>
+<span class="text-white text-lg font-bold tracking-wide">Unlock Zone</span>
+</button>
+<button class="w-full py-3 text-neutral-400 text-sm font-medium hover:text-white transition-colors">
+                    Cancel Transaction
+                </button>
+</div>
+<div class="mt-4 flex justify-center items-center gap-1.5 opacity-40">
+<span class="material-symbols-outlined text-[10px] text-white">verified_user</span>
+<p class="text-[10px] text-white font-medium">Secure SSL Encrypted Transaction</p>
+</div>
+</div>
+</div>
+<!-- Shimmer Animation Definition -->
+<style>
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</body></html>
