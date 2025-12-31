@@ -3,7 +3,7 @@ package com.egytour.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Text
+import com.egytour.app.ui.screens.LoginScreen
 import com.egytour.app.ui.theme.EgytourTheme
 
 class MainActivity : ComponentActivity() {
@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EgytourTheme {
-                Text(text = "Hello, Egytour!")
+                LoginScreen()
             }
         }
     }

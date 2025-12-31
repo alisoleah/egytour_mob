@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Egytour</string>
+    <string name="back">Back</string>
+    <string name="explore">EXPLORE</string>
+    <string name="the_unseen">THE UNSEEN</string>
+    <string name="unlock_exclusive_tours">Unlock exclusive tours, 3D maps, and offline access.</string>
+    <string name="log_in">Log In</string>
+    <string name="register">Register</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="toggle_password_visibility">Toggle password visibility</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="access_account">ACCESS ACCOUNT</string>
+    <string name="or_continue_with">Or continue with</string>
+    <string name="google">Google</string>
+    <string name="apple">Apple</string>
+    <string name="not_a_member">Not a member?</string>
+    <string name="create_account">Create Account</string>
 </resources>

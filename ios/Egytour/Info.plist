@@ -10,5 +10,18 @@
 	<string>1.0</string>
 	<key>CFBundleName</key>
 	<string>Egytour</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PlayfairDisplay-Regular.ttf</string>
+		<string>PlayfairDisplay-Medium.ttf</string>
+		<string>PlayfairDisplay-SemiBold.ttf</string>
+		<string>PlayfairDisplay-Bold.ttf</string>
+		<string>PlayfairDisplay-ExtraBold.ttf</string>
+		<string>PlayfairDisplay-Black.ttf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+		<string>Inter-Bold.ttf</string>
+	</array>
 </dict>
 </plist>
