@@ -3,19 +3,23 @@ package com.egytour.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.egytour.app.core.theme.EgytourColors
 import com.egytour.app.features.auth.LoginScreen
 import com.egytour.app.features.audio.AudioPlayerScreen
 import com.egytour.app.services.AudioService
-import javax.inject.Inject
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     
     // In a real Hilt setup, this would be injected. 
@@ -48,45 +52,45 @@ class MainActivity : ComponentActivity() {
                 } else if (!isLoggedIn) {
                     LoginScreen(onLoginSuccess = { isLoggedIn = true })
                 } else {
-                    androidx.compose.material3.Scaffold(
+                    Scaffold(
                         bottomBar = {
-                            androidx.compose.material3.NavigationBar(
+                            NavigationBar(
                                 containerColor = EgytourColors.BgSecondary
                             ) {
-                                androidx.compose.material3.NavigationBarItem(
+                                NavigationBarItem(
                                     selected = currentScreen == "audio",
                                     onClick = { currentScreen = "audio" },
-                                    icon = { androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.PlayArrow, "Audio") },
-                                    label = { androidx.compose.material3.Text("Audio") }
+                                    icon = { Icon(Icons.Default.PlayArrow, "Audio") },
+                                    label = { Text("Audio") }
                                 )
-                                androidx.compose.material3.NavigationBarItem(
+                                NavigationBarItem(
                                     selected = currentScreen == "map",
                                     onClick = { currentScreen = "map" },
-                                    icon = { androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.LocationOn, "Map") },
-                                    label = { androidx.compose.material3.Text("Map") }
+                                    icon = { Icon(Icons.Default.LocationOn, "Map") },
+                                    label = { Text("Map") }
                                 )
-                                androidx.compose.material3.NavigationBarItem(
+                                NavigationBarItem(
                                     selected = currentScreen == "ai",
                                     onClick = { currentScreen = "ai" },
-                                    icon = { androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.Star, "AI Guide") },
-                                    label = { androidx.compose.material3.Text("AI Guide") }
+                                    icon = { Icon(Icons.Default.Star, "AI Guide") },
+                                    label = { Text("AI Guide") }
                                 )
-                                androidx.compose.material3.NavigationBarItem(
+                                NavigationBarItem(
                                     selected = currentScreen == "trips",
                                     onClick = { currentScreen = "trips" },
-                                    icon = { androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.DateRange, "Trips") },
-                                    label = { androidx.compose.material3.Text("Trips") }
+                                    icon = { Icon(Icons.Default.DateRange, "Trips") },
+                                    label = { Text("Trips") }
                                 )
-                                androidx.compose.material3.NavigationBarItem(
+                                NavigationBarItem(
                                     selected = currentScreen == "settings",
                                     onClick = { currentScreen = "settings" },
-                                    icon = { androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.Settings, "Settings") },
-                                    label = { androidx.compose.material3.Text("Settings") }
+                                    icon = { Icon(Icons.Default.Settings, "Settings") },
+                                    label = { Text("Settings") }
                                 )
                             }
                         }
                     ) { padding ->
-                        androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.padding(padding)) {
+                        Box(Modifier.padding(padding)) {
                             when (currentScreen) {
                                 "audio" -> AudioPlayerScreen(audioService = audioService)
                                 "map" -> com.egytour.app.features.explore.ui.ExploreMapScreen(viewModel = exploreViewModel)
