@@ -1,10 +1,10 @@
 -- Enable PostGIS extension
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS postgis_topology;
-CREATE EXTENSION IF NOT EXISTS vector;
+DO $$ BEGIN CREATE EXTENSION IF NOT EXISTS vector; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 
 -- Sites table
-CREATE TABLE sites (
+CREATE TABLE IF NOT EXISTS sites (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name_en TEXT NOT NULL,
     name_ar TEXT NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE sites (
 );
 
 -- Points of Interest table
-CREATE TABLE points_of_interest (
+CREATE TABLE IF NOT EXISTS points_of_interest (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     site_id UUID REFERENCES sites(id) ON DELETE CASCADE,
     name_en TEXT NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE points_of_interest (
 );
 
 -- Audio Content table
-CREATE TABLE audio_content (
+CREATE TABLE IF NOT EXISTS audio_content (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     poi_id UUID REFERENCES points_of_interest(id) ON DELETE CASCADE,
     language_code TEXT NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE audio_content (
 );
 
 -- Users table
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     email TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE users (
 );
 
 -- Itineraries table
-CREATE TABLE itineraries (
+CREATE TABLE IF NOT EXISTS itineraries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE itineraries (
 );
 
 -- Itinerary Stops table
-CREATE TABLE itinerary_stops (
+CREATE TABLE IF NOT EXISTS itinerary_stops (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     itinerary_id UUID REFERENCES itineraries(id) ON DELETE CASCADE,
     poi_id UUID REFERENCES points_of_interest(id),
@@ -97,13 +97,31 @@ CREATE TABLE itinerary_stops (
 );
 
 -- Indexes for performance
-CREATE INDEX idx_sites_coordinates ON sites USING GIST (coordinates);
-CREATE INDEX idx_sites_region ON sites(region);
-CREATE INDEX idx_pois_coordinates ON points_of_interest USING GIST (coordinates);
-CREATE INDEX idx_pois_site_id ON points_of_interest(site_id);
-CREATE INDEX idx_pois_type ON points_of_interest(poi_type);
-CREATE INDEX idx_audio_poi_id ON audio_content(poi_id);
-CREATE INDEX idx_audio_language ON audio_content(language_code, expertise_level);
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_itinerary_user ON itineraries(user_id);
-CREATE INDEX idx_stops_itinerary ON itinerary_stops(itinerary_id);
+CREATE INDEX IF NOT EXISTS idx_sites_coordinates ON sites USING GIST (coordinates);
+CREATE INDEX IF NOT EXISTS idx_sites_region ON sites(region);
+CREATE INDEX IF NOT EXISTS idx_pois_coordinates ON points_of_interest USING GIST (coordinates);
+CREATE INDEX IF NOT EXISTS idx_pois_site_id ON points_of_interest(site_id);
+CREATE INDEX IF NOT EXISTS idx_pois_type ON points_of_interest(poi_type);
+CREATE INDEX IF NOT EXISTS idx_audio_poi_id ON audio_content(poi_id);
+CREATE INDEX IF NOT EXISTS idx_audio_language ON audio_content(language_code, expertise_level);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_itinerary_user ON itineraries(user_id);
+CREATE INDEX IF NOT EXISTS idx_stops_itinerary ON itinerary_stops(itinerary_id);
+
+-- Knowledge Chunks table (RAG knowledge bank)
+CREATE TABLE IF NOT EXISTS knowledge_chunks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    poi_id UUID REFERENCES points_of_interest(id) ON DELETE CASCADE,
+    site_id UUID REFERENCES sites(id) ON DELETE CASCADE,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    historical_period TEXT,
+    category TEXT DEFAULT 'history',
+    language_code TEXT NOT NULL DEFAULT 'en',
+    metadata JSONB,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_knowledge_poi_id ON knowledge_chunks(poi_id);
+CREATE INDEX IF NOT EXISTS idx_knowledge_site_id ON knowledge_chunks(site_id);
+CREATE INDEX IF NOT EXISTS idx_knowledge_category ON knowledge_chunks(category);

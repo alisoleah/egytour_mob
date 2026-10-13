@@ -5,24 +5,34 @@ import { sql } from 'drizzle-orm';
 export async function seedGizaPyramids() {
     console.log('🌱 Seeding Giza Pyramids...');
 
-    // Insert Giza site
+    const openingHours = {
+        monday: { open: "08:00", close: "17:00" },
+        tuesday: { open: "08:00", close: "17:00" },
+        wednesday: { open: "08:00", close: "17:00" },
+        thursday: { open: "08:00", close: "17:00" },
+        friday: { open: "08:00", close: "17:00" },
+        saturday: { open: "08:00", close: "17:00" },
+        sunday: { open: "08:00", close: "17:00" }
+    };
+    const entryFee = { egyptian: 60, foreign: 200, student: 100, currency: "EGP" };
+
     const [gizaSite] = await db.execute(sql`
     INSERT INTO sites (
       name_en, name_ar, name_fr,
       description_en, description_ar, description_fr,
       region, coordinates, opening_hours, entry_fee, image_url
     ) VALUES (
-      'Giza Pyramid Complex',
-      'مجمع أهرامات الجيزة',
-      'Complexe pyramidal de Gizeh',
-      'The Giza pyramid complex is an archaeological site on the Giza Plateau, on the outskirts of Cairo, Egypt. It includes the three Great Pyramids, the Great Sphinx, and several cemeteries.',
-      'مجمع أهرامات الجيزة هو موقع أثري على هضبة الجيزة، على مشارف القاهرة، مصر. يضم الأهرامات الثلاثة الكبرى وأبو الهول العظيم والعديد من المقابر.',
-      'Le complexe pyramidal de Gizeh est un site archéologique sur le plateau de Gizeh, à la périphérie du Caire, en Égypte.',
-      'cairo',
-      ST_GeogFromText('POINT(31.1342 29.9792)'),
-      '{"monday": {"open": "08:00", "close": "17:00"}, "tuesday": {"open": "08:00", "close": "17:00"}, "wednesday": {"open": "08:00", "close": "17:00"}, "thursday": {"open": "08:00", "close": "17:00"}, "friday": {"open": "08:00", "close": "17:00"}, "saturday": {"open": "08:00", "close": "17:00"}, "sunday": {"open": "08:00", "close": "17:00"}}'::jsonb,
-      '{"egyptian": 60, "foreign": 200, "student": 100, "currency": "EGP"}'::jsonb,
-      'https://cdn.egytour.app/sites/giza-pyramids.jpg'
+      ${'Giza Pyramid Complex'},
+      ${'مجمع أهرامات الجيزة'},
+      ${'Complexe pyramidal de Gizeh'},
+      ${'The Giza pyramid complex is an archaeological site on the Giza Plateau, on the outskirts of Cairo, Egypt. It includes the three Great Pyramids, the Great Sphinx, and several cemeteries.'},
+      ${'مجمع أهرامات الجيزة هو موقع أثري على هضبة الجيزة، على مشارف القاهرة، مصر. يضم الأهرامات الثلاثة الكبرى وأبو الهول العظيم والعديد من المقابر.'},
+      ${'Le complexe pyramidal de Gizeh est un site archéologique sur le plateau de Gizeh, à la périphérie du Caire, en Égypte.'},
+      ${'cairo'},
+      ST_GeogFromText(${'POINT(31.1342 29.9792)'}),
+      ${JSON.stringify(openingHours)}::jsonb,
+      ${JSON.stringify(entryFee)}::jsonb,
+      ${'https://cdn.egytour.app/sites/giza-pyramids.jpg'}
     )
     RETURNING id
   `);
@@ -107,7 +117,7 @@ export async function seedGizaPyramids() {
       )
       RETURNING id
     `);
-        insertedPOIs.push((result[0] as any)?.id);
+        insertedPOIs.push((result as any)?.id);
     }
 
     // Insert audio content for each POI (3 languages × 3 expertise levels)
