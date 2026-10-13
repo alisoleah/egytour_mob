@@ -27,7 +27,7 @@ export async function seedGizaPyramids() {
     RETURNING id
   `);
 
-    const siteId = gizaSite.rows[0].id;
+    const siteId = (gizaSite as any)?.id;
 
     // Insert POIs
     const poisData = [
@@ -107,7 +107,7 @@ export async function seedGizaPyramids() {
       )
       RETURNING id
     `);
-        insertedPOIs.push(result.rows[0].id);
+        insertedPOIs.push((result[0] as any)?.id);
     }
 
     // Insert audio content for each POI (3 languages × 3 expertise levels)

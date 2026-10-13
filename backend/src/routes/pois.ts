@@ -28,8 +28,8 @@ const poisRoutes: FastifyPluginAsync = async (fastify) => {
             poi: {
                 ...poi,
                 coordinates: {
-                    latitude: coords.rows[0].latitude,
-                    longitude: coords.rows[0].longitude,
+                    latitude: (coords as any)?.latitude,
+                    longitude: (coords as any)?.longitude,
                 },
             },
             audioContent: audio,
@@ -62,7 +62,7 @@ const poisRoutes: FastifyPluginAsync = async (fastify) => {
       LIMIT 20
     `);
 
-        const formattedPOIs = nearbyPOIs.rows.map((poi: any) => ({
+        const formattedPOIs = (nearbyPOIs as any[]).map((poi: any) => ({
             id: poi.id,
             siteId: poi.site_id,
             nameEn: poi.name_en,

@@ -8,7 +8,7 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
     fastify.get('/', async (request, reply) => {
         const { region } = request.query as { region?: string };
 
-        let query = db.select({
+        const allSites = await db.select({
             id: sites.id,
             nameEn: sites.nameEn,
             nameAr: sites.nameAr,
@@ -20,13 +20,7 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
             openingHours: sites.openingHours,
             entryFee: sites.entryFee,
             imageUrl: sites.imageUrl,
-        }).from(sites);
-
-        if (region) {
-            query = query.where(eq(sites.region, region));
-        }
-
-        const allSites = await query;
+        }).from(sites).where(region ? eq(sites.region, region) : undefined);
 
         // Add coordinates from geography column
         const sitesWithCoords = await Promise.all(
@@ -40,8 +34,8 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
                 return {
                     ...site,
                     coordinates: {
-                        latitude: coords.rows[0].latitude,
-                        longitude: coords.rows[0].longitude,
+                        latitude: (coords as any)?.latitude,
+                        longitude: (coords as any)?.longitude,
                     },
                 };
             })
@@ -82,8 +76,8 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
                 return {
                     ...poi,
                     coordinates: {
-                        latitude: poiCoords.rows[0].latitude,
-                        longitude: poiCoords.rows[0].longitude,
+                        latitude: (poiCoords as any)?.latitude,
+                        longitude: (poiCoords as any)?.longitude,
                     },
                 };
             })
@@ -93,8 +87,8 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
             site: {
                 ...site,
                 coordinates: {
-                    latitude: coords.rows[0].latitude,
-                    longitude: coords.rows[0].longitude,
+                    latitude: (coords as any)?.latitude,
+                    longitude: (coords as any)?.longitude,
                 },
             },
             pois: poisWithCoords,
@@ -119,8 +113,8 @@ const sitesRoutes: FastifyPluginAsync = async (fastify) => {
                 return {
                     ...poi,
                     coordinates: {
-                        latitude: coords.rows[0].latitude,
-                        longitude: coords.rows[0].longitude,
+                        latitude: (coords as any)?.latitude,
+                        longitude: (coords as any)?.longitude,
                     },
                 };
             })
