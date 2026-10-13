@@ -1,0 +1,26 @@
+/*
+  Localizable.strings
+  Egytour
+
+  Created by Jules on 12/31/25.
+
+*/
+
+"app_name" = "Egytour";
+"back" = "Back";
+"explore" = "EXPLORE";
+"the_unseen" = "THE UNSEEN";
+"unlock_exclusive_tours" = "Unlock exclusive tours, 3D maps, and offline access.";
+"log_in" = "Log In";
+"register" = "Register";
+"email_address" = "Email Address";
+"password" = "Password";
+"toggle_password_visibility" = "Toggle password visibility";
+"forgot_password" = "Forgot Password?";
+"access_account" = "ACCESS ACCOUNT";
+"or_continue_with" = "Or continue with";
+"google" = "Google";
+"apple" = "Apple";
+"not_a_member" = "Not a member?";
+"create_account" = "Create Account";
+"google_logo" = "google_logo";
