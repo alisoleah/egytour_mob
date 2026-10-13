@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+*.swp
+
+# ---------- Android ----------
+android/.gradle/
+android/.idea/
+android/local.properties
+android/build/
+android/app/build/
+android/captures/
+*.iml
+*.apk
+*.aab
+.externalNativeBuild/
+.cxx/
+
+# ---------- iOS / Xcode ----------
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+Pods/
+
+# ---------- Backend ----------
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
