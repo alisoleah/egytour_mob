@@ -29,7 +29,8 @@ import com.google.maps.android.compose.*
 
 @Composable
 fun ExploreMapScreen(
-    viewModel: ExploreViewModel
+    viewModel: ExploreViewModel,
+    onViewDetails: (POI) -> Unit = {}
 ) {
     val pois by viewModel.pois.collectAsState()
     val selectedPOI by viewModel.selectedPOI.collectAsState()
@@ -140,7 +141,8 @@ fun ExploreMapScreen(
                         onDismiss = { viewModel.selectPOI(null) },
                         onCalculateRoute = { viewModel.calculateRoute(poi) },
                         onStartNavigation = { viewModel.startNavigation() },
-                        onExplore = { isARVisible = true }
+                        onExplore = { isARVisible = true },
+                        onViewDetails = { onViewDetails(poi) }
                     )
                 }
             }
@@ -249,7 +251,8 @@ fun POICard(
     onDismiss: () -> Unit,
     onCalculateRoute: () -> Unit,
     onStartNavigation: () -> Unit,
-    onExplore: () -> Unit
+    onExplore: () -> Unit,
+    onViewDetails: () -> Unit = {}
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -339,6 +342,14 @@ fun POICard(
                     ) {
                         Text("Start Walk")
                     }
+                }
+
+                OutlinedButton(
+                    onClick = onViewDetails,
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, EgytourColors.Border)
+                ) {
+                    Text("Details")
                 }
 
                 OutlinedButton(

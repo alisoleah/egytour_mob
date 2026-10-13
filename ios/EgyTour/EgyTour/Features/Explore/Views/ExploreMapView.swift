@@ -4,6 +4,9 @@ import MapKit
 struct ExploreMapView: View {
     @StateObject private var viewModel = ExploreViewModel()
     @State private var isARPresented = false
+    @State private var isMonumentDetailPresented = false
+    @State private var isCheckoutPresented = false
+    @State private var isSuccessPresented = false
     
     var body: some View {
         ZStack {
@@ -61,6 +64,9 @@ struct ExploreMapView: View {
                         },
                         onExploreAR: {
                             isARPresented = true
+                        },
+                        onViewDetails: {
+                            isMonumentDetailPresented = true
                         }
                     )
                     .padding(.bottom, 50)
@@ -75,6 +81,40 @@ struct ExploreMapView: View {
                     isARPresented = false
                 })
             }
+        }
+        .fullScreenCover(isPresented: $isMonumentDetailPresented) {
+            MonumentDetailView(
+                title: viewModel.selectedPOI?.name ?? "Giza Monument",
+                description: viewModel.selectedPOI?.description ?? "Ancient monumental site on the Giza Plateau.",
+                onBack: { isMonumentDetailPresented = false },
+                onPlayAudio: { isMonumentDetailPresented = false },
+                onStartAR: {
+                    isMonumentDetailPresented = false
+                    isARPresented = true
+                },
+                onUnlockZone: {
+                    isMonumentDetailPresented = false
+                    isCheckoutPresented = true
+                }
+            )
+        }
+        .fullScreenCover(isPresented: $isCheckoutPresented) {
+            CheckoutView(
+                passTitle: viewModel.selectedPOI?.name ?? "Giza Necropolis Pass",
+                onDismiss: { isCheckoutPresented = false },
+                onPaymentSuccess: {
+                    isCheckoutPresented = false
+                    isSuccessPresented = true
+                }
+            )
+        }
+        .fullScreenCover(isPresented: $isSuccessPresented) {
+            PurchaseSuccessView(
+                zoneName: viewModel.selectedPOI?.name ?? "Giza Necropolis Zone",
+                onExplore: { isSuccessPresented = false },
+                onDownloadPacks: { isSuccessPresented = false },
+                onClose: { isSuccessPresented = false }
+            )
         }
     }
 }
@@ -305,6 +345,7 @@ struct POIRouteCardView: View {
     var onCalculateRoute: () -> Void
     var onStartNavigation: () -> Void
     var onExploreAR: () -> Void
+    var onViewDetails: (() -> Void)? = nil
     
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -392,7 +433,7 @@ struct POIRouteCardView: View {
                     }
                     .font(.headline)
                     .foregroundColor(Color.primaryGold)
-                    .padding(.horizontal, 18)
+                    .padding(.horizontal, 14)
                     .padding(.vertical, 12)
                     .background(Color.primaryGold.opacity(0.15))
                     .cornerRadius(10)
@@ -400,6 +441,22 @@ struct POIRouteCardView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.primaryGold, lineWidth: 1.5)
                     )
+                }
+                
+                if let onViewDetails = onViewDetails {
+                    Button(action: onViewDetails) {
+                        Image(systemName: "info.circle.fill")
+                            .font(.headline)
+                            .foregroundColor(Color.primaryGold)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
+                            .background(Color.primaryGold.opacity(0.15))
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.primaryGold, lineWidth: 1.5)
+                            )
+                    }
                 }
             }
         }

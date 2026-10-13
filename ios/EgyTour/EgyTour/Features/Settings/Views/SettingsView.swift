@@ -76,8 +76,18 @@ struct SettingsView: View {
                 
                 // Offline Storage
                 Section(header: Text("Offline Storage")) {
+                    NavigationLink(destination: OfflineManagerView()) {
+                        HStack {
+                            Text("Manage Offline Packs")
+                            Spacer()
+                            Text("5 Packs Available")
+                                .font(.caption)
+                                .foregroundColor(.primaryGold)
+                        }
+                    }
+                    
                     HStack {
-                        Text("Offline Tours & Maps")
+                        Text("Current Cache Usage")
                         Spacer()
                         Text(cacheCleared ? "0 MB" : "142.8 MB")
                             .foregroundColor(.secondary)

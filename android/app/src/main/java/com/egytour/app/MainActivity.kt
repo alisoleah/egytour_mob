@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.egytour.app.core.theme.EgytourColors
 import com.egytour.app.features.auth.LoginScreen
 import com.egytour.app.features.audio.AudioPlayerScreen
@@ -52,51 +54,77 @@ class MainActivity : ComponentActivity() {
                 } else if (!isLoggedIn) {
                     LoginScreen(onLoginSuccess = { isLoggedIn = true })
                 } else {
+                    val isFullScreenModal = currentScreen in listOf("checkout", "purchase_success", "monument_detail", "offline_manager")
                     Scaffold(
                         bottomBar = {
-                            NavigationBar(
-                                containerColor = EgytourColors.BgSecondary
-                            ) {
-                                NavigationBarItem(
-                                    selected = currentScreen == "audio",
-                                    onClick = { currentScreen = "audio" },
-                                    icon = { Icon(Icons.Default.PlayArrow, "Audio") },
-                                    label = { Text("Audio") }
-                                )
-                                NavigationBarItem(
-                                    selected = currentScreen == "map",
-                                    onClick = { currentScreen = "map" },
-                                    icon = { Icon(Icons.Default.LocationOn, "Map") },
-                                    label = { Text("Map") }
-                                )
-                                NavigationBarItem(
-                                    selected = currentScreen == "ai",
-                                    onClick = { currentScreen = "ai" },
-                                    icon = { Icon(Icons.Default.Star, "AI Guide") },
-                                    label = { Text("AI Guide") }
-                                )
-                                NavigationBarItem(
-                                    selected = currentScreen == "trips",
-                                    onClick = { currentScreen = "trips" },
-                                    icon = { Icon(Icons.Default.DateRange, "Trips") },
-                                    label = { Text("Trips") }
-                                )
-                                NavigationBarItem(
-                                    selected = currentScreen == "settings",
-                                    onClick = { currentScreen = "settings" },
-                                    icon = { Icon(Icons.Default.Settings, "Settings") },
-                                    label = { Text("Settings") }
-                                )
+                            if (!isFullScreenModal) {
+                                NavigationBar(
+                                    containerColor = EgytourColors.BgSecondary
+                                ) {
+                                    NavigationBarItem(
+                                        selected = currentScreen == "audio",
+                                        onClick = { currentScreen = "audio" },
+                                        icon = { Icon(Icons.Default.PlayArrow, "Audio") },
+                                        label = { Text("Audio") }
+                                    )
+                                    NavigationBarItem(
+                                        selected = currentScreen == "map",
+                                        onClick = { currentScreen = "map" },
+                                        icon = { Icon(Icons.Default.LocationOn, "Map") },
+                                        label = { Text("Map") }
+                                    )
+                                    NavigationBarItem(
+                                        selected = currentScreen == "ai",
+                                        onClick = { currentScreen = "ai" },
+                                        icon = { Icon(Icons.Default.Star, "AI Guide") },
+                                        label = { Text("AI Guide") }
+                                    )
+                                    NavigationBarItem(
+                                        selected = currentScreen == "trips",
+                                        onClick = { currentScreen = "trips" },
+                                        icon = { Icon(Icons.Default.DateRange, "Trips") },
+                                        label = { Text("Trips") }
+                                    )
+                                    NavigationBarItem(
+                                        selected = currentScreen == "settings",
+                                        onClick = { currentScreen = "settings" },
+                                        icon = { Icon(Icons.Default.Settings, "Settings") },
+                                        label = { Text("Settings") }
+                                    )
+                                }
                             }
                         }
                     ) { padding ->
-                        Box(Modifier.padding(padding)) {
+                        Box(Modifier.padding(if (isFullScreenModal) PaddingValues(0.dp) else padding)) {
                             when (currentScreen) {
                                 "audio" -> AudioPlayerScreen(audioService = audioService)
-                                "map" -> com.egytour.app.features.explore.ui.ExploreMapScreen(viewModel = exploreViewModel)
+                                "map" -> com.egytour.app.features.explore.ui.ExploreMapScreen(
+                                    viewModel = exploreViewModel,
+                                    onViewDetails = { currentScreen = "monument_detail" }
+                                )
+                                "monument_detail" -> com.egytour.app.features.monument.ui.MonumentDetailScreen(
+                                    onBack = { currentScreen = "map" },
+                                    onUnlockZone = { currentScreen = "checkout" },
+                                    onPlayAudio = { currentScreen = "audio" },
+                                    onStartARNavigation = { currentScreen = "map" }
+                                )
+                                "checkout" -> com.egytour.app.features.checkout.ui.CheckoutScreen(
+                                    onBack = { currentScreen = "monument_detail" },
+                                    onPaymentSuccess = { currentScreen = "purchase_success" }
+                                )
+                                "purchase_success" -> com.egytour.app.features.checkout.ui.PurchaseSuccessScreen(
+                                    onClose = { currentScreen = "map" },
+                                    onExploreClicked = { currentScreen = "map" },
+                                    onDownloadPacksClicked = { currentScreen = "offline_manager" }
+                                )
+                                "offline_manager" -> com.egytour.app.features.offline.ui.OfflineManagerScreen(
+                                    onBack = { currentScreen = "settings" }
+                                )
                                 "ai" -> com.egytour.app.features.ai.ui.ChatScreen(viewModel = chatViewModel)
                                 "trips" -> com.egytour.app.features.itinerary.ui.ItineraryScreen(viewModel = itineraryViewModel)
-                                "settings" -> com.egytour.app.features.settings.ui.SettingsScreen(onSignOut = { isLoggedIn = false })
+                                "settings" -> com.egytour.app.features.settings.ui.SettingsScreen(
+                                    onSignOut = { isLoggedIn = false }
+                                )
                             }
                         }
                     }
