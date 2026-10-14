@@ -13,7 +13,7 @@ struct POI: Identifiable, Codable {
     let triggerRadius: Double // in meters
     
     enum POIType: String, Codable {
-        case pyramid, temple, museum, market, modern
+        case pyramid, temple, museum, market, modern, statue, tomb
     }
 }
 

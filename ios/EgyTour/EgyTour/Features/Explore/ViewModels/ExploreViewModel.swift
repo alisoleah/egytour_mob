@@ -31,7 +31,84 @@ class ExploreViewModel: ObservableObject {
     }
     
     func loadPOIs() {
-        self.pois = [
+        // 1. Initial offline fallback
+        self.pois = getFallbackPOIs()
+        
+        // 2. Fetch live POIs from Fastify PostGIS backend
+        fetchLivePOIs(latitude: 29.9792, longitude: 31.1342)
+    }
+    
+    private func fetchLivePOIs(latitude: Double, longitude: Double) {
+        guard let url = URL(string: "http://localhost:3000/api/v1/pois/nearby?lat=\(latitude)&lon=\(longitude)&radius=5000") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 5
+        
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self, let data = data else { return }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let rawPois = json["pois"] as? [[String: Any]] {
+                    
+                    var fetchedList: [POI] = []
+                    for item in rawPois {
+                        guard let id = item["id"] as? String,
+                              let nameEn = item["nameEn"] as? String,
+                              let coordsDict = item["coordinates"] as? [String: Any],
+                              let lat = coordsDict["latitude"] as? Double,
+                              let lon = coordsDict["longitude"] as? Double else {
+                            continue
+                        }
+                        
+                        let rawType = (item["poiType"] as? String ?? "monument").lowercased()
+                        let type: POI.POIType = {
+                            switch rawType {
+                            case "pyramid": return .pyramid
+                            case "temple": return .temple
+                            case "museum": return .museum
+                            case "market": return .market
+                            case "statue": return .statue
+                            case "tomb": return .tomb
+                            default: return .modern
+                            }
+                        }()
+                        
+                        let period = item["historicalPeriod"] as? String ?? "Old Kingdom"
+                        let radius = item["triggerRadiusMeters"] as? Double ?? 50.0
+                        let img = item["imageUrl"] as? String ?? "great_pyramid"
+                        
+                        let poi = POI(
+                            id: id,
+                            name: nameEn,
+                            description: "Historic \(rawType) located at Giza plateau (\(period)).",
+                            type: type,
+                            coordinates: Coordinates(latitude: lat, longitude: lon),
+                            imageUrl: img,
+                            audioUrl: "https://cdn.egytour.app/audio/\(id)/en/casual.mp3",
+                            historicalPeriod: period.replacingOccurrences(of: "_", with: " ").capitalized,
+                            triggerRadius: radius
+                        )
+                        fetchedList.append(poi)
+                    }
+                    
+                    if !fetchedList.isEmpty {
+                        DispatchQueue.main.async {
+                            self.pois = fetchedList
+                        }
+                    }
+                }
+            } catch {
+                // Keep existing fallback POIs
+            }
+        }.resume()
+    }
+    
+    private func getFallbackPOIs() -> [POI] {
+        return [
             POI(
                 id: "giza-1",
                 name: "Great Pyramid of Giza",
