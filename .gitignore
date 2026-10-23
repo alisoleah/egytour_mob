@@ -35,3 +35,4 @@ dist/
 .env.*
 !.env.example
 *.log
+.dev-logs/
