@@ -42,6 +42,7 @@ class MainActivity : ComponentActivity() {
             val exploreViewModel = remember { com.egytour.app.features.explore.viewmodel.ExploreViewModel() }
             val chatViewModel = remember { com.egytour.app.features.ai.viewmodel.ChatViewModel() }
             val itineraryViewModel = remember { com.egytour.app.features.itinerary.viewmodel.ItineraryViewModel() }
+            val syncManager = remember { com.egytour.app.features.offline.OfflineSyncManager(applicationContext) }
 
             Surface(
                 modifier = Modifier.fillMaxSize(),
@@ -105,7 +106,10 @@ class MainActivity : ComponentActivity() {
                                 "monument_detail" -> com.egytour.app.features.monument.ui.MonumentDetailScreen(
                                     onBack = { currentScreen = "map" },
                                     onUnlockZone = { currentScreen = "checkout" },
-                                    onPlayAudio = { currentScreen = "audio" },
+                                    onPlayAudio = {
+                                        audioService.loadTrack("giza-1", "Great Pyramid of Khufu")
+                                        currentScreen = "audio"
+                                    },
                                     onStartARNavigation = { currentScreen = "map" }
                                 )
                                 "checkout" -> com.egytour.app.features.checkout.ui.CheckoutScreen(
@@ -118,6 +122,7 @@ class MainActivity : ComponentActivity() {
                                     onDownloadPacksClicked = { currentScreen = "offline_manager" }
                                 )
                                 "offline_manager" -> com.egytour.app.features.offline.ui.OfflineManagerScreen(
+                                    syncManager = syncManager,
                                     onBack = { currentScreen = "settings" }
                                 )
                                 "ai" -> com.egytour.app.features.ai.ui.ChatScreen(viewModel = chatViewModel)

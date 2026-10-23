@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.egytour.app.core.theme.EgytourColors
+import com.egytour.app.features.offline.OfflineSyncManager
 
 enum class PackDownloadState {
     DOWNLOADED,
@@ -38,24 +39,27 @@ data class OfflineRegionPack(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OfflineManagerScreen(
+    syncManager: OfflineSyncManager? = null,
     onBack: () -> Unit = {}
 ) {
     var wifiOnly by remember { mutableStateOf(true) }
     var autoSyncNearby by remember { mutableStateOf(false) }
 
-    var packs by remember {
-        mutableStateOf(
-            listOf(
-                OfflineRegionPack("1", "Giza Plateau & Pyramids", "All 5 POIs, 45 Audio Guides, 3D AR Assets", 450, PackDownloadState.DOWNLOADED),
-                OfflineRegionPack("2", "Luxor & Karnak Temples", "Great Hypostyle Hall, Sacred Lake, Avenue of Sphinxes", 620, PackDownloadState.DOWNLOADING, 0.68f),
-                OfflineRegionPack("3", "Valley of the Kings", "Tutankhamun, Ramses VI, Seti I tombs", 380, PackDownloadState.NOT_DOWNLOADED),
-                OfflineRegionPack("4", "Historic Islamic & Coptic Cairo", "Khan el-Khalili, Citadel, Hanging Church", 290, PackDownloadState.NOT_DOWNLOADED),
-                OfflineRegionPack("5", "Aswan & Abu Simbel Temples", "Philae Island, Colossal Ramses II Statues", 410, PackDownloadState.NOT_DOWNLOADED)
-            )
-        )
-    }
+    val defaultPacks = listOf(
+        OfflineRegionPack("1", "Giza Plateau & Pyramids", "All 5 POIs, 45 Audio Guides, 3D AR Assets", 450, PackDownloadState.DOWNLOADED, 1f),
+        OfflineRegionPack("2", "Luxor & Karnak Temples", "Great Hypostyle Hall, Sacred Lake, Avenue of Sphinxes", 620, PackDownloadState.NOT_DOWNLOADED, 0f),
+        OfflineRegionPack("3", "Valley of the Kings", "Tutankhamun, Ramses VI, Seti I tombs", 380, PackDownloadState.NOT_DOWNLOADED, 0f),
+        OfflineRegionPack("4", "Historic Islamic & Coptic Cairo", "Khan el-Khalili, Citadel, Hanging Church", 290, PackDownloadState.NOT_DOWNLOADED, 0f),
+        OfflineRegionPack("5", "Aswan & Abu Simbel Temples", "Philae Island, Colossal Ramses II Statues", 410, PackDownloadState.NOT_DOWNLOADED, 0f)
+    )
 
-    val totalDownloadedMb = packs.filter { it.state == PackDownloadState.DOWNLOADED }.sumOf { it.sizeMb }
+    val packsFromManager by (syncManager?.packs?.collectAsState() ?: remember { mutableStateOf(defaultPacks) })
+    var localPacks by remember { mutableStateOf(defaultPacks) }
+    val packs = if (syncManager != null) packsFromManager else localPacks
+
+    val storageBreakdown by (syncManager?.storageBreakdown?.collectAsState() ?: remember {
+        mutableStateOf(com.egytour.app.features.offline.StorageBreakdown(450, 42000, 85550, 128000))
+    })
 
     Scaffold(
         topBar = {
@@ -141,14 +145,14 @@ fun OfflineManagerScreen(
                                     color = EgytourColors.TextSecondary
                                 )
                                 Text(
-                                    "${String.format("%.1f", totalDownloadedMb / 1024f + 0.45f)} GB",
+                                    "${String.format("%.1f", storageBreakdown.appUsedMb / 1024f)} GB",
                                     fontSize = 28.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = EgytourColors.PrimaryGold
                                 )
                             }
                             Text(
-                                "Total Capacity: 256 GB",
+                                "Total: ${storageBreakdown.totalDeviceMb / 1024} GB",
                                 fontSize = 12.sp,
                                 color = EgytourColors.TextTertiary
                             )
@@ -157,8 +161,12 @@ fun OfflineManagerScreen(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         // Progress Gauge
+                        val usedFraction = if (storageBreakdown.totalDeviceMb > 0) {
+                            (storageBreakdown.appUsedMb.toFloat() / storageBreakdown.totalDeviceMb.toFloat()).coerceIn(0.02f, 1f)
+                        } else 0.05f
+
                         LinearProgressIndicator(
-                            progress = 0.35f,
+                            progress = usedFraction,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(8.dp)
@@ -170,7 +178,7 @@ fun OfflineManagerScreen(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            "EgyTour audio & 3D packs use 0.4% of your total device storage.",
+                            "EgyTour audio & 3D packs use ${String.format("%.1f", usedFraction * 100)}% of storage (${storageBreakdown.freeSpaceMb / 1024} GB free).",
                             fontSize = 11.sp,
                             color = EgytourColors.TextTertiary
                         )
@@ -305,8 +313,12 @@ fun OfflineManagerScreen(
                                 PackDownloadState.DOWNLOADED -> {
                                     IconButton(
                                         onClick = {
-                                            packs = packs.map {
-                                                if (it.id == pack.id) it.copy(state = PackDownloadState.NOT_DOWNLOADED) else it
+                                            if (syncManager != null) {
+                                                syncManager.cancelOrDeletePack(pack.id)
+                                            } else {
+                                                localPacks = localPacks.map {
+                                                    if (it.id == pack.id) it.copy(state = PackDownloadState.NOT_DOWNLOADED) else it
+                                                }
                                             }
                                         },
                                         modifier = Modifier
@@ -324,8 +336,12 @@ fun OfflineManagerScreen(
                                 PackDownloadState.DOWNLOADING -> {
                                     IconButton(
                                         onClick = {
-                                            packs = packs.map {
-                                                if (it.id == pack.id) it.copy(state = PackDownloadState.NOT_DOWNLOADED) else it
+                                            if (syncManager != null) {
+                                                syncManager.cancelOrDeletePack(pack.id)
+                                            } else {
+                                                localPacks = localPacks.map {
+                                                    if (it.id == pack.id) it.copy(state = PackDownloadState.NOT_DOWNLOADED) else it
+                                                }
                                             }
                                         },
                                         modifier = Modifier
@@ -343,8 +359,12 @@ fun OfflineManagerScreen(
                                 PackDownloadState.NOT_DOWNLOADED -> {
                                     IconButton(
                                         onClick = {
-                                            packs = packs.map {
-                                                if (it.id == pack.id) it.copy(state = PackDownloadState.DOWNLOADING, progress = 0.1f) else it
+                                            if (syncManager != null) {
+                                                syncManager.startDownload(pack.id)
+                                            } else {
+                                                localPacks = localPacks.map {
+                                                    if (it.id == pack.id) it.copy(state = PackDownloadState.DOWNLOADING, progress = 0.1f) else it
+                                                }
                                             }
                                         },
                                         modifier = Modifier

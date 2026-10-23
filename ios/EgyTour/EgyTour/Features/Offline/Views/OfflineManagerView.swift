@@ -2,7 +2,7 @@ import SwiftUI
 
 enum PackStateIOS {
     case downloaded
-    case downloading(Float)
+    case downloading(Double)
     case notDownloaded
 }
 
@@ -11,21 +11,21 @@ struct RegionPackIOS: Identifiable {
     let title: String
     let subtitle: String
     let sizeMb: Int
-    var state: PackStateIOS
 }
 
 struct OfflineManagerView: View {
     var onDismiss: () -> Void = {}
     
+    @ObservedObject var downloadManager = DownloadManager.shared
     @State private var wifiOnly = true
     @State private var autoSync = false
     
-    @State private var packs: [RegionPackIOS] = [
-        RegionPackIOS(id: "1", title: "Giza Plateau & Pyramids", subtitle: "All 5 POIs, 45 Audio Guides, 3D AR Assets", sizeMb: 450, state: .downloaded),
-        RegionPackIOS(id: "2", title: "Luxor & Karnak Temples", subtitle: "Great Hypostyle Hall, Sacred Lake, Avenue of Sphinxes", sizeMb: 620, state: .downloading(0.68)),
-        RegionPackIOS(id: "3", title: "Valley of the Kings", subtitle: "Tutankhamun, Ramses VI, Seti I tombs", sizeMb: 380, state: .notDownloaded),
-        RegionPackIOS(id: "4", title: "Historic Islamic & Coptic Cairo", subtitle: "Khan el-Khalili, Citadel, Hanging Church", sizeMb: 290, state: .notDownloaded),
-        RegionPackIOS(id: "5", title: "Aswan & Abu Simbel Temples", subtitle: "Philae Island, Colossal Ramses II Statues", sizeMb: 410, state: .notDownloaded)
+    let packs: [RegionPackIOS] = [
+        RegionPackIOS(id: "1", title: "Giza Plateau & Pyramids", subtitle: "All 5 POIs, 45 Audio Guides, 3D AR Assets", sizeMb: 450),
+        RegionPackIOS(id: "2", title: "Luxor & Karnak Temples", subtitle: "Great Hypostyle Hall, Sacred Lake, Avenue of Sphinxes", sizeMb: 620),
+        RegionPackIOS(id: "3", title: "Valley of the Kings", subtitle: "Tutankhamun, Ramses VI, Seti I tombs", sizeMb: 380),
+        RegionPackIOS(id: "4", title: "Historic Islamic & Coptic Cairo", subtitle: "Khan el-Khalili, Citadel, Hanging Church", sizeMb: 290),
+        RegionPackIOS(id: "5", title: "Aswan & Abu Simbel Temples", subtitle: "Philae Island, Colossal Ramses II Statues", sizeMb: 410)
     ]
     
     var body: some View {
@@ -72,7 +72,11 @@ struct OfflineManagerView: View {
     }
     
     private var storageGaugeCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        let stats = downloadManager.getStorageStats()
+        let usedGb = Double(stats.usedMb) / 1024.0
+        let percent = (stats.totalGb > 0) ? (usedGb / stats.totalGb) : 0.01
+        
+        return VStack(alignment: .leading, spacing: 14) {
             HStack {
                 Text("DEVICE STORAGE")
                     .font(.system(size: 11, weight: .bold))
@@ -95,57 +99,62 @@ struct OfflineManagerView: View {
                     Text("EgyTour Used")
                         .font(.system(size: 12))
                         .foregroundColor(.white.opacity(0.7))
-                    Text("1.2 GB")
+                    Text(String(format: "%.1f GB", usedGb))
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.primaryGold)
                 }
                 
                 Spacer()
                 
-                Text("Total Capacity: 256 GB")
-                    .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.5))
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("Total Device")
+                        .font(.system(size: 11))
+                        .foregroundColor(.white.opacity(0.5))
+                    Text(String(format: "%.0f GB", stats.totalGb))
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.white.opacity(0.8))
+                }
             }
             
             // Progress Bar
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.white.opacity(0.08))
+                        .fill(Color.white.opacity(0.1))
                         .frame(height: 8)
                     
                     RoundedRectangle(cornerRadius: 4)
                         .fill(Color.primaryGold)
-                        .frame(width: geo.size.width * 0.35, height: 8)
+                        .frame(width: max(8, geo.size.width * CGFloat(percent)), height: 8)
                 }
             }
             .frame(height: 8)
             
-            Text("EgyTour audio and 3D packs use 0.4% of your total phone storage.")
+            Text("EgyTour offline packs use \(String(format: "%.1f", percent * 100))% of storage (\(String(format: "%.1f", stats.freeGb)) GB free).")
                 .font(.system(size: 11))
                 .foregroundColor(.white.opacity(0.5))
         }
         .padding(18)
         .background(Color(hex: "262626"))
         .cornerRadius(16)
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.white.opacity(0.1), lineWidth: 1))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primaryGold.opacity(0.3), lineWidth: 1))
     }
     
     private var downloadSettingsCard: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 14) {
             Toggle(isOn: $wifiOnly) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Download Over Wi-Fi Only")
+                    Text("Download over Wi-Fi Only")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.white)
-                    Text("Avoid cellular data roaming charges")
+                    Text("Avoid cellular data consumption")
                         .font(.system(size: 12))
                         .foregroundColor(.white.opacity(0.6))
                 }
             }
             .toggleStyle(SwitchToggleStyle(tint: .primaryGold))
             
-            Divider().background(Color.white.opacity(0.08))
+            Divider().background(Color.white.opacity(0.1))
             
             Toggle(isOn: $autoSync) {
                 VStack(alignment: .leading, spacing: 2) {
@@ -166,7 +175,10 @@ struct OfflineManagerView: View {
     }
     
     private func packCard(for pack: RegionPackIOS) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        let isDownloaded = downloadManager.isPackDownloaded(packId: pack.id)
+        let downloadProgress = downloadManager.activeDownloads[pack.id]
+        
+        return VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(pack.title)
@@ -185,28 +197,25 @@ struct OfflineManagerView: View {
                 
                 Spacer()
                 
-                switch pack.state {
-                case .downloaded:
+                if isDownloaded {
                     Button(action: {
-                        toggleState(for: pack.id, to: .notDownloaded)
+                        downloadManager.deletePack(packId: pack.id)
                     }) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 24))
                             .foregroundColor(Color(hex: "4CAF50"))
                     }
-                    
-                case .downloading:
+                } else if let progress = downloadProgress {
                     Button(action: {
-                        toggleState(for: pack.id, to: .notDownloaded)
+                        downloadManager.deletePack(packId: pack.id)
                     }) {
                         Image(systemName: "pause.circle.fill")
                             .font(.system(size: 24))
                             .foregroundColor(.primaryGold)
                     }
-                    
-                case .notDownloaded:
+                } else {
                     Button(action: {
-                        toggleState(for: pack.id, to: .downloading(0.1))
+                        downloadManager.downloadPack(packId: pack.id) {}
                     }) {
                         Image(systemName: "arrow.down.circle")
                             .font(.system(size: 24))
@@ -215,7 +224,7 @@ struct OfflineManagerView: View {
                 }
             }
             
-            if case .downloading(let progress) = pack.state {
+            if let progress = downloadProgress {
                 VStack(alignment: .leading, spacing: 4) {
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
@@ -239,11 +248,5 @@ struct OfflineManagerView: View {
         .background(Color(hex: "262626"))
         .cornerRadius(12)
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white.opacity(0.08), lineWidth: 1))
-    }
-    
-    private func toggleState(for packId: String, to newState: PackStateIOS) {
-        if let idx = packs.firstIndex(where: { $0.id == packId }) {
-            packs[idx].state = newState
-        }
     }
 }
