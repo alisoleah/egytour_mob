@@ -35,7 +35,7 @@ start_backend() {
   if curl -sf localhost:3000/health >/dev/null; then
     echo "already running"
   else
-    (cd "$ROOT/backend" && nohup npm run dev >"$LOG_DIR/backend.log" 2>&1 &)
+    (cd "$ROOT/backend" && nohup npm run dev </dev/null >"$LOG_DIR/backend.log" 2>&1 & disown)
     until curl -sf localhost:3000/health >/dev/null; do sleep 1; done
     echo "up (logs: .dev-logs/backend.log)"
   fi

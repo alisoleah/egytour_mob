@@ -9,6 +9,7 @@ import sitesRoutes from './routes/sites';
 import poisRoutes from './routes/pois';
 import aiRoutes from './routes/ai';
 import itineraryRoutes from './routes/itineraries';
+import audioRoutes from './routes/audio';
 
 const app = Fastify({
     logger: {
@@ -36,6 +37,7 @@ app.register(sitesRoutes, { prefix: '/api/v1/sites' });
 app.register(poisRoutes, { prefix: '/api/v1/pois' });
 app.register(aiRoutes, { prefix: '/api/v1/ai' });
 app.register(itineraryRoutes, { prefix: '/api/v1/itineraries' });
+app.register(audioRoutes, { prefix: '/api/v1/audio' });
 
 
 

@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,7 +23,10 @@ import com.egytour.app.core.theme.EgytourColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(onSignOut: () -> Unit = {}) {
+fun SettingsScreen(
+    onSignOut: () -> Unit = {},
+    onNavigateToOffline: () -> Unit = {}
+) {
     var selectedLanguage by remember { mutableStateOf("en") }
     var expertiseLevel by remember { mutableStateOf("enthusiast") }
     var autoPlayAudio by remember { mutableStateOf(true) }
@@ -218,22 +223,66 @@ fun SettingsScreen(onSignOut: () -> Unit = {}) {
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(8.dp))
+                                .clickable { onNavigateToOffline() }
+                                .padding(vertical = 4.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "Offline Tours & Maps",
-                                color = EgytourColors.TextPrimary,
-                                fontSize = 14.sp
-                            )
-                            Text(
-                                text = if (cacheCleared) "0 MB" else "142.8 MB",
-                                color = EgytourColors.TextSecondary,
-                                fontSize = 14.sp
-                            )
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .background(EgytourColors.PrimaryGold.copy(alpha = 0.15f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.FileDownload,
+                                        contentDescription = null,
+                                        tint = EgytourColors.PrimaryGold,
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Column {
+                                    Text(
+                                        text = "Offline Monument Packs",
+                                        color = EgytourColors.TextPrimary,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                    Text(
+                                        text = "Download regional guides & audio",
+                                        color = EgytourColors.TextSecondary,
+                                        fontSize = 12.sp
+                                    )
+                                }
+                            }
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = if (cacheCleared) "0 MB" else "450 MB",
+                                    color = EgytourColors.PrimaryGold,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Icon(
+                                    imageVector = Icons.Default.ChevronRight,
+                                    contentDescription = "Open",
+                                    tint = EgytourColors.TextSecondary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                            }
                         }
 
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Divider(color = EgytourColors.Border)
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Button(

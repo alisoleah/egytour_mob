@@ -128,7 +128,8 @@ class MainActivity : ComponentActivity() {
                                 "ai" -> com.egytour.app.features.ai.ui.ChatScreen(viewModel = chatViewModel)
                                 "trips" -> com.egytour.app.features.itinerary.ui.ItineraryScreen(viewModel = itineraryViewModel)
                                 "settings" -> com.egytour.app.features.settings.ui.SettingsScreen(
-                                    onSignOut = { isLoggedIn = false }
+                                    onSignOut = { isLoggedIn = false },
+                                    onNavigateToOffline = { currentScreen = "offline_manager" }
                                 )
                             }
                         }

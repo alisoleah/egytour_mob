@@ -114,7 +114,7 @@ class AudioService @Inject constructor(
         val mediaUri = if (isLocal) {
             Uri.fromFile(localFile)
         } else {
-            Uri.parse("https://cdn.egytour.app/audio/$poiId/$language/$expertise.mp3")
+            Uri.parse("http://10.0.2.2:3000/api/v1/audio/$poiId/$language/$expertise.mp3")
         }
 
         // Expected duration by expertise level
