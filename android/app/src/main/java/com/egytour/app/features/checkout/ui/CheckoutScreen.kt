@@ -24,11 +24,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.egytour.app.R
 import com.egytour.app.core.theme.EgytourColors
+import com.egytour.app.features.checkout.data.PassRepository
+import kotlinx.coroutines.launch
 
 enum class PaymentMethodType {
     CREDIT_CARD,
     GOOGLE_PAY,
     MOBILE_WALLET
+}
+
+/** State of the hotel pass-code activation (Tour_os PMS integration). */
+sealed interface PassActivationState {
+    data object Idle : PassActivationState
+    data object Activating : PassActivationState
+    data class Success(
+        val experienceName: String?,
+        val expiresAt: String?,
+        val alreadyActive: Boolean
+    ) : PassActivationState
+    data class Error(val message: String) : PassActivationState
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,6 +60,13 @@ fun CheckoutScreen(
     var cvv by remember { mutableStateOf("888") }
     var cardholderName by remember { mutableStateOf("Omar Sherif") }
     var isProcessing by remember { mutableStateOf(false) }
+
+    // Hotel pass code (Tour_os PMS): guests who bought a pass at the front
+    // desk skip payment and unlock with their EG-XXXXXXXX code instead.
+    var passCode by remember { mutableStateOf("") }
+    var passState by remember { mutableStateOf<PassActivationState>(PassActivationState.Idle) }
+    val scope = rememberCoroutineScope()
+    val context = androidx.compose.ui.platform.LocalContext.current
 
     Scaffold(
         topBar = {
@@ -333,6 +354,139 @@ fun CheckoutScreen(
                     ),
                     shape = RoundedCornerShape(10.dp)
                 )
+            }
+
+            // Hotel Pass Code (Tour_os PMS integration)
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = EgytourColors.BgSecondary),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(1.dp, EgytourColors.Border, RoundedCornerShape(16.dp))
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            Icons.Default.ConfirmationNumber,
+                            contentDescription = null,
+                            tint = EgytourColors.PrimaryGold,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            "BOUGHT AT YOUR HOTEL?",
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = EgytourColors.PrimaryGold,
+                            letterSpacing = 1.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "If your pass was charged to your hotel folio, enter the access code from your receipt to unlock it for free.",
+                        fontSize = 13.sp,
+                        color = EgytourColors.TextSecondary
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        OutlinedTextField(
+                            value = passCode,
+                            onValueChange = {
+                                passCode = it.uppercase().take(11)
+                                passState = PassActivationState.Idle
+                            },
+                            label = { Text("EG-XXXXXXXX") },
+                            singleLine = true,
+                            modifier = Modifier.weight(1f),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedTextColor = Color.White,
+                                unfocusedTextColor = Color.White,
+                                focusedBorderColor = EgytourColors.PrimaryGold,
+                                unfocusedBorderColor = EgytourColors.Border,
+                                focusedLabelColor = EgytourColors.PrimaryGold
+                            ),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        Button(
+                            onClick = {
+                                passState = PassActivationState.Activating
+                                val code = passCode
+                                scope.launch {
+                                    val result = PassRepository.activatePass(context, code)
+                                    passState = when {
+                                        result.success -> PassActivationState.Success(
+                                            experienceName = result.experienceName,
+                                            expiresAt = result.expiresAt,
+                                            alreadyActive = result.alreadyActive
+                                        )
+                                        else -> PassActivationState.Error(
+                                            result.error ?: "Activation failed"
+                                        )
+                                    }
+                                }
+                            },
+                            enabled = passState !is PassActivationState.Activating &&
+                                Regex("^EG-[A-Z2-9]{8}$").matches(passCode),
+                            shape = RoundedCornerShape(10.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = EgytourColors.PrimaryGold
+                            ),
+                            modifier = Modifier.height(52.dp)
+                        ) {
+                            if (passState is PassActivationState.Activating) {
+                                CircularProgressIndicator(
+                                    color = Color.Black,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            } else {
+                                Text(
+                                    "Unlock",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp
+                                )
+                            }
+                        }
+                    }
+
+                    when (val state = passState) {
+                        is PassActivationState.Success -> {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.CheckCircle,
+                                    contentDescription = null,
+                                    tint = Color(0xFF4CAF50),
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    if (state.alreadyActive) {
+                                        "Already active on this device${state.experienceName?.let { ": $it" } ?: ""}"
+                                    } else {
+                                        "Unlocked: ${state.experienceName ?: "pass"}"
+                                    },
+                                    fontSize = 13.sp,
+                                    color = Color(0xFF4CAF50),
+                                    fontWeight = FontWeight.Medium
+                                )
+                            }
+                        }
+                        is PassActivationState.Error -> {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                state.message,
+                                fontSize = 13.sp,
+                                color = Color(0xFFEF5350)
+                            )
+                        }
+                        else -> Unit
+                    }
+                }
             }
         }
     }

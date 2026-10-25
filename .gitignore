@@ -36,3 +36,6 @@ dist/
 !.env.example
 *.log
 .dev-logs/
+
+# Security scanner state
+.mimosa/

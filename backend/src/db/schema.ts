@@ -99,3 +99,22 @@ export const knowledgeChunks = pgTable('knowledge_chunks', {
     createdAt: timestamp('created_at').defaultNow(),
 });
 
+/**
+ * Hotel-issued pass codes (Tour_os PMS). A guest buys an experience at the
+ * front desk, receives an EG-XXXXXXXX access code, and activates it here to
+ * unlock the corresponding content tier.
+ */
+export const userPasses = pgTable('user_passes', {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }),
+    accessCode: text('access_code').notNull().unique(),
+    experienceId: text('experience_id').notNull(),
+    experienceName: text('experience_name').notNull(),
+    description: text('description'),
+    /** 'touros' = validated server-to-server against the PMS; 'dev' = local dev code. */
+    source: text('source').notNull().default('touros'),
+    activatedAt: timestamp('activated_at').defaultNow(),
+    expiresAt: timestamp('expires_at'),
+    createdAt: timestamp('created_at').defaultNow(),
+});
+
