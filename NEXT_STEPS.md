@@ -94,6 +94,24 @@
 
 ---
 
+## 🏨 Tour_os PMS Integration — Hotel Pass Codes (DONE)
+
+**Branch**: `feat/touros-pass-integration`
+
+Closes the loop between the Tour_os Hotel PMS and EgyTour: a guest buys an experience at the hotel front desk (charged to their folio in the PMS) and receives an `EG-XXXXXXXX` access code. Entering the code in the app's checkout screen ("Bought at your hotel?") activates the pass and unlocks the content tier — VIP All-Access upgrades the account to `vip` for 72 hours.
+
+* **Backend**: `POST /api/v1/passes/activate` (JWT) validates the code against the PMS (`GET /experiences/access/:code`), redeems it single-use, records it in `user_passes`, and upgrades the account tier. `GET /api/v1/passes` lists activated passes.
+* **Outbound policy**: the PMS origin is pinned from `TOUROS_API_URL` (public hosts only — localhost/private/link-local blocked, DNS-rebinding safe, redirects rejected). Service-account credentials via `TOUROS_SERVICE_EMAIL` / `TOUROS_SERVICE_PASSWORD`.
+* **Dev mode**: with `TOUROS_API_URL` empty, codes listed in `DEV_PASS_CODES` (default `EG-TESTTEST`) activate the VIP tier locally — the full flow works without a deployed PMS.
+* **Android**: `PassRepository` bootstraps a guest account automatically; the checkout screen has an inline unlock card.
+* **Migration runner**: `backend/src/db/migrate.ts` now applies every `migrations/*.sql` exactly once (tracked in `schema_migrations`).
+
+**Try it locally**: `cd backend && npm install && npm run db:migrate && npm run dev`, then activate `EG-TESTTEST` in the app's checkout (emulator backend is `10.0.2.2:3000`).
+
+**Remaining**: point `TOUROS_API_URL` at the deployed PMS and create the service account there; iOS pass-activation UI parity.
+
+---
+
 ## 🛠️ How to Run the Local Dev Environment
 One command launches the database, runs migrations, seeds data, starts the Fastify API, boots the Android emulator, and installs the app:
 
